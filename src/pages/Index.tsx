@@ -4,6 +4,7 @@ import CategoriesGrid from "@/components/CategoriesGrid";
 import PromoBanner from "@/components/PromoBanner";
 import SneakPeek from "@/components/SneakPeek";
 import Footer from "@/components/Footer";
+import FloatingButtons from "@/components/FloatingButtons";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <PromoBanner />
       <SneakPeek />
       <Footer />
+      <FloatingButtons />
     </div>
   );
 };
