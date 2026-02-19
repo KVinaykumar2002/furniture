@@ -57,8 +57,8 @@ const SneakPeek = () => {
                 </div>
               )}
               <div className="flex items-center justify-center gap-2">
-                <span className="text-sm text-foreground">{product.price.toLocaleString()} AED</span>
-                <span className="text-sm text-muted-foreground/50 line-through">{product.oldPrice?.toLocaleString()} AED</span>
+                <span className="text-sm text-foreground">₹{product.price.toLocaleString('en-IN')}</span>
+                <span className="text-sm text-muted-foreground/50 line-through">₹{product.oldPrice?.toLocaleString('en-IN')}</span>
               </div>
             </a>
           ))}
