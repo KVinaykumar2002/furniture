@@ -1,4 +1,3 @@
-import { Search, User } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const navLinks = ["Furniture", "Outdoor", "Office", "Lighting", "Rugs", "Decor", "About"];
@@ -38,19 +37,7 @@ const Navbar = () => {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
-          <button className="text-nav-foreground/80 hover:text-nav-foreground transition-colors">
-            <Search className="w-5 h-5" />
-          </button>
-          <button className="text-nav-foreground/80 hover:text-nav-foreground transition-colors">
-            <User className="w-5 h-5" />
-          </button>
-          <a
-            href="#"
-            className="hidden sm:inline-flex border border-nav-foreground/50 text-nav-foreground text-sm px-5 py-1.5 rounded-sm hover:bg-nav-foreground/10 transition-colors"
-          >
-            Notify Me
-          </a>
+        <div className="flex items-center">
           <button
             className="md:hidden text-nav-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
