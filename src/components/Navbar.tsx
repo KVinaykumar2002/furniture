@@ -22,7 +22,7 @@ const Navbar = () => {
     >
       <div className="container flex items-center justify-between h-16 px-6">
         <a href="/" className="font-display text-2xl font-light tracking-wide text-nav-foreground">
-          ebarza
+          DesignerZhub
         </a>
 
         <nav className="hidden md:flex items-center gap-6">

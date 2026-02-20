@@ -33,10 +33,10 @@ const HeroSection = () => {
           LAUNCHING SOON
         </h1>
         <p className="text-lg md:text-xl text-primary-foreground/90 font-light mb-2">
-          Modern Furniture & Interior Design in Dubai
+          Exclusive Luxury Home Interiors in Hyderabad
         </p>
         <p className="text-sm md:text-base text-primary-foreground/75 font-light mb-8">
-          One Store for Every Detail of Your Luxury Home
+          Design Your Dream Space with DesignerZhub
         </p>
         <a
           href="#"
