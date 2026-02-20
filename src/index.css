@@ -41,9 +41,9 @@
     --hero-overlay: 30 10% 15%;
     --badge-bg: 30 20% 92%;
     --badge-foreground: 30 10% 35%;
-    --footer-bg: 30 15% 72%;
-    --footer-foreground: 30 20% 92%;
-    --footer-muted: 30 10% 80%;
+    --footer-bg: 30 14% 68%;
+    --footer-foreground: 30 12% 18%;
+    --footer-muted: 30 10% 38%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -73,5 +73,11 @@
 @layer utilities {
   .text-shadow-hero {
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@layer components {
+  .focus-ring-footer {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-footer-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-footer;
   }
 }

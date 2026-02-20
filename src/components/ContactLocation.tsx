@@ -6,39 +6,49 @@ const ADDRESS =
 
 const ContactLocation = () => {
   return (
-    <section className="bg-footer text-footer-foreground py-12">
-      <div className="container px-6 space-y-10">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-8 md:gap-12 flex-wrap">
+    <section id="contact" className="bg-footer text-footer-foreground py-14 md:py-16">
+      <div className="container px-6 space-y-12">
+        <h2 className="text-lg font-semibold tracking-wide text-footer-foreground text-center md:text-left">
+          Get in touch
+        </h2>
+
+        <div className="flex flex-col sm:flex-row flex-wrap gap-6 sm:gap-10">
           <a
             href="tel:8121806688"
-            className="flex items-center gap-3 text-footer-foreground hover:opacity-90 transition-opacity"
+            className="flex items-center gap-4 py-4 px-4 min-h-[52px] rounded-lg border border-footer-foreground/15 bg-footer-foreground/[0.03] hover:bg-footer-foreground/[0.06] transition-colors focus-ring-footer"
           >
-            <Phone className="w-5 h-5 shrink-0 text-footer-foreground/70" />
-            <span className="text-sm md:text-base">81218 06688</span>
+            <span className="flex items-center justify-center w-11 h-11 rounded-full border border-footer-foreground/20 shrink-0">
+              <Phone className="w-5 h-5 text-primary" aria-hidden />
+            </span>
+            <span className="text-base font-medium text-footer-foreground">81218 06688</span>
           </a>
           <a
             href="https://designerzhub.co.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 text-footer-foreground hover:opacity-90 transition-opacity"
+            className="flex items-center gap-4 py-4 px-4 min-h-[52px] rounded-lg border border-footer-foreground/15 bg-footer-foreground/[0.03] hover:bg-footer-foreground/[0.06] transition-colors focus-ring-footer"
           >
-            <Globe className="w-5 h-5 shrink-0 text-footer-foreground/70" />
-            <span className="text-sm md:text-base">designerzhub.co.in</span>
+            <span className="flex items-center justify-center w-11 h-11 rounded-full border border-footer-foreground/20 shrink-0">
+              <Globe className="w-5 h-5 text-primary" aria-hidden />
+            </span>
+            <span className="text-base font-medium text-footer-foreground break-all">designerzhub.co.in</span>
           </a>
           <a
             href={MAP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-start gap-3 text-footer-foreground hover:opacity-90 transition-opacity"
+            className="flex items-start gap-4 py-4 px-4 min-h-[52px] rounded-lg border border-footer-foreground/15 bg-footer-foreground/[0.03] hover:bg-footer-foreground/[0.06] transition-colors focus-ring-footer"
           >
-            <MapPin className="w-5 h-5 mt-0.5 shrink-0 text-footer-foreground/70" />
-            <span className="text-sm md:text-base text-left">{ADDRESS}</span>
+            <span className="flex items-center justify-center w-11 h-11 rounded-full border border-footer-foreground/20 shrink-0 mt-0.5">
+              <MapPin className="w-5 h-5 text-primary" aria-hidden />
+            </span>
+            <span className="text-base text-footer-foreground leading-relaxed text-left">{ADDRESS}</span>
           </a>
         </div>
 
-        <div className="w-full">
-          <p className="text-sm font-semibold text-footer-foreground/90 mb-3 flex items-center gap-2">
-            <MapPin className="w-4 h-4" />
+        <div className="w-full space-y-4">
+          <p className="text-sm font-semibold text-footer-foreground flex items-center gap-2">
+            <MapPin className="w-4 h-4 shrink-0" aria-hidden />
             Find us on the map
           </p>
           <div className="rounded-lg overflow-hidden border border-footer-foreground/20 shadow-md">
@@ -58,7 +68,7 @@ const ContactLocation = () => {
             href={MAP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-2 text-sm text-footer-foreground/80 hover:text-footer-foreground transition-colors underline"
+            className="inline-flex items-center gap-2 py-2.5 text-base text-footer-foreground font-medium hover:text-primary transition-colors underline focus-ring-footer rounded"
           >
             Open in Google Maps
           </a>
