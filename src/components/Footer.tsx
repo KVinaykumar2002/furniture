@@ -1,7 +1,13 @@
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react";
 
 const PHONE = "8121806688";
 const WEBSITE = "https://designerzhub.co.in";
+
+const socialLinks = [
+  { icon: Facebook, label: "Facebook", href: "#" },
+  { icon: Instagram, label: "Instagram", href: "#" },
+  { icon: Twitter, label: "Twitter", href: "#" },
+];
 
 const Footer = () => {
   return (
@@ -10,11 +16,23 @@ const Footer = () => {
 
       <div className="container px-6 py-20 relative z-10 animate-fade-in">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-          <div className="md:col-span-4">
+          <div className="md:col-span-3">
             <h3 className="font-display text-3xl font-light tracking-wider mb-6 text-primary">DesignerZhub</h3>
-            <p className="text-base text-footer-muted leading-relaxed mb-8 max-w-sm">
+            <p className="text-base text-footer-muted leading-relaxed mb-6 max-w-sm">
               Exclusive Luxury Home Interiors. We curate spaces that tell your story with elegance and precision.
             </p>
+            <div className="flex gap-3 mb-6">
+              {socialLinks.map(({ icon: Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="w-10 h-10 rounded-full border border-footer-foreground/20 flex items-center justify-center text-footer-foreground hover:bg-footer-foreground/10 hover:text-primary transition-colors focus-ring-footer"
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
             <a
               href="#contact"
               className="inline-block border border-footer-foreground/40 text-footer-foreground text-xs uppercase tracking-widest px-8 py-3.5 min-h-[44px] flex items-center hover:bg-footer-foreground/10 transition-all duration-300 focus-ring-footer rounded-sm"
@@ -57,7 +75,24 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="md:col-span-4 space-y-8">
+          <div className="md:col-span-2">
+            <h4 className="text-xs font-bold tracking-[0.2em] mb-6 text-footer-foreground uppercase">Customer Service</h4>
+            <ul className="space-y-3 text-sm text-footer-muted leading-relaxed">
+              {["Contact Us", "Shipping Info", "Returns & Exchanges", "FAQ", "Order Status"].map((item) => (
+                <li key={item}>
+                  <a
+                    href="#"
+                    className="hover:text-primary transition-colors duration-300 flex items-center group py-1.5 min-h-[44px] md:min-h-0 focus-ring-footer rounded"
+                  >
+                    <span className="w-0 group-hover:w-2 h-px bg-primary mr-0 group-hover:mr-2 transition-all duration-300 shrink-0" />
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-3 space-y-8">
             <div>
               <h4 className="text-xs font-bold tracking-[0.2em] mb-6 text-footer-foreground uppercase">Headquarters</h4>
               <div className="flex items-start gap-4">

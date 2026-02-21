@@ -1,48 +1,37 @@
-import catSofas from "@/assets/cat-sofas.jpg";
-import catBedroom from "@/assets/cat-bedroom.jpg";
-import catLighting from "@/assets/cat-lighting.jpg";
-import catDining from "@/assets/cat-dining.jpg";
-import catOutdoor from "@/assets/cat-outdoor.jpg";
-import catOffice from "@/assets/cat-office.jpg";
-import catRugs from "@/assets/cat-rugs.jpg";
-import catDecor from "@/assets/cat-decor.jpg";
-
-const categories = [
-  { name: "Sofas", image: catSofas },
-  { name: "Bedroom Sets", image: catBedroom },
-  { name: "Lighting", image: catLighting },
-  { name: "Dining Tables", image: catDining },
-  { name: "Outdoor", image: catOutdoor },
-  { name: "Office", image: catOffice },
-  { name: "Rugs", image: catRugs },
-  { name: "Decor", image: catDecor },
-];
+import { Link } from "react-router-dom";
+import { categories, categorySlugs } from "@/data/categories";
 
 const CategoriesGrid = () => {
   return (
-    <section className="py-16 px-6">
+    <section id="categories" className="py-16 px-6">
       <div className="container">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {categories.map((cat) => (
-            <a
-              key={cat.name}
-              href="#"
-              className="group relative aspect-square overflow-hidden rounded-sm"
-            >
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-foreground/20 group-hover:bg-foreground/30 transition-colors" />
-              <span className="absolute top-3 right-3 bg-badge text-badge-foreground text-xs px-3 py-1 rounded-sm font-body">
-                SOON
-              </span>
-              <span className="absolute bottom-4 left-4 text-primary-foreground font-display text-xl md:text-2xl font-light">
-                {cat.name}
-              </span>
-            </a>
-          ))}
+        <p className="text-xs tracking-[0.3em] text-muted-foreground/60 uppercase mb-2 text-center md:text-left">
+          Shop by category
+        </p>
+        <h2 className="font-display text-2xl md:text-3xl font-light tracking-wider text-foreground mb-10 text-center md:text-left">
+          Product Categories
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {categorySlugs.map((slug) => {
+            const cat = categories[slug];
+            return (
+              <Link
+                key={slug}
+                to={`/${slug}`}
+                className="group relative aspect-square overflow-hidden rounded-sm"
+              >
+                <img
+                  src={cat.image}
+                  alt={cat.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-foreground/20 group-hover:bg-foreground/30 transition-colors" />
+                <span className="absolute bottom-4 left-4 right-4 text-primary-foreground font-display text-lg md:text-xl font-light">
+                  {cat.title}
+                </span>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

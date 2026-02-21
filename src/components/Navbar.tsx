@@ -1,10 +1,23 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { ShoppingBag } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
-const navLinks = ["Furniture", "Outdoor", "Office", "Lighting", "Rugs", "Decor", "About"];
+const navLinks: { label: string; path: string }[] = [
+  { label: "Furniture", path: "/furniture" },
+  { label: "Outdoor", path: "/outdoor" },
+  { label: "Office", path: "/office" },
+  { label: "Lighting", path: "/lighting" },
+  { label: "Rugs", path: "/rugs" },
+  { label: "Decor", path: "/decor" },
+  { label: "About", path: "/about" },
+];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const { itemCount, openCart } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +27,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -21,23 +38,40 @@ const Navbar = () => {
       }`}
     >
       <div className="container flex items-center justify-between h-16 px-6">
-        <a href="/" className="font-display text-2xl font-light tracking-wide text-nav-foreground">
+        <Link to="/" className="font-display text-2xl font-light tracking-wide text-nav-foreground">
           DesignerZhub
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-sm text-nav-foreground/80 hover:text-nav-foreground transition-colors"
+          {navLinks.map(({ label, path }) => (
+            <Link
+              key={path}
+              to={path}
+              className={`text-sm transition-colors ${
+                location.pathname === path
+                  ? "text-nav-foreground font-medium"
+                  : "text-nav-foreground/80 hover:text-nav-foreground"
+              }`}
             >
-              {link}
-            </a>
+              {label}
+            </Link>
           ))}
         </nav>
 
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={openCart}
+            className="relative p-3 -m-3 text-nav-foreground rounded-md hover:bg-nav-foreground/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-nav-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-nav min-h-[44px] min-w-[44px] flex items-center justify-center"
+            aria-label={`Open cart${itemCount > 0 ? `, ${itemCount} items` : ""}`}
+          >
+            <ShoppingBag className="w-6 h-6" />
+            {itemCount > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-medium flex items-center justify-center">
+                {itemCount > 99 ? "99+" : itemCount}
+              </span>
+            )}
+          </button>
           <button
             type="button"
             className="md:hidden p-3 -m-3 text-nav-foreground rounded-md hover:bg-nav-foreground/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-nav-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-nav min-h-[44px] min-w-[44px] flex items-center justify-center"
@@ -55,14 +89,18 @@ const Navbar = () => {
       {mobileOpen && (
         <nav className="md:hidden bg-nav border-t border-nav-foreground/10 px-6 py-4" aria-label="Mobile menu">
           <ul className="space-y-1">
-            {navLinks.map((link) => (
-              <li key={link}>
-                <a
-                  href="#"
-                  className="block py-3.5 px-2 text-sm text-nav-foreground/90 hover:text-nav-foreground hover:bg-nav-foreground/5 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-nav-foreground/40 focus-visible:ring-inset min-h-[44px] flex items-center"
+            {navLinks.map(({ label, path }) => (
+              <li key={path}>
+                <Link
+                  to={path}
+                  className={`block py-3.5 px-2 text-sm rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-nav-foreground/40 focus-visible:ring-inset min-h-[44px] flex items-center transition-colors ${
+                    location.pathname === path
+                      ? "text-nav-foreground bg-nav-foreground/10"
+                      : "text-nav-foreground/90 hover:text-nav-foreground hover:bg-nav-foreground/5"
+                  }`}
                 >
-                  {link}
-                </a>
+                  {label}
+                </Link>
               </li>
             ))}
           </ul>
