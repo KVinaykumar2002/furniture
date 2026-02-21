@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
+import { toast } from "sonner";
 
 const WISHLIST_KEY = "designerzhub-wishlist";
 
@@ -39,8 +40,13 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
   const toggle = useCallback((id: string) => {
     setWishlistIds((prev) => {
       const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
+      const wasAdded = next.has(id);
+      if (wasAdded) next.delete(id);
       else next.add(id);
+      setTimeout(() => {
+        if (wasAdded) toast.success("Removed from wishlist");
+        else toast.success("Added to wishlist");
+      }, 0);
       return next;
     });
   }, []);

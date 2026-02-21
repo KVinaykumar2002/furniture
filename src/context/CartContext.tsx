@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
+import { toast } from "sonner";
 
 export interface CartItem {
   id: string;
@@ -39,15 +40,28 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       return [...prev, { ...item, quantity }];
     });
+    toast.success("Added to cart", { description: item.name });
   }, []);
 
   const removeItem = useCallback((id: string) => {
-    setItems((prev) => prev.filter((i) => i.id !== id));
+    setItems((prev) => {
+      const removed = prev.find((i) => i.id === id);
+      if (removed) {
+        setTimeout(() => toast.success("Removed from cart", { description: removed.name }), 0);
+      }
+      return prev.filter((i) => i.id !== id);
+    });
   }, []);
 
   const updateQuantity = useCallback((id: string, quantity: number) => {
     if (quantity < 1) {
-      setItems((prev) => prev.filter((i) => i.id !== id));
+      setItems((prev) => {
+        const removed = prev.find((i) => i.id === id);
+        if (removed) {
+          setTimeout(() => toast.success("Removed from cart", { description: removed.name }), 0);
+        }
+        return prev.filter((i) => i.id !== id);
+      });
       return;
     }
     setItems((prev) =>

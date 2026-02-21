@@ -5,12 +5,17 @@ import SectionWrapper from "@/components/SectionWrapper";
 import ProductCard from "@/components/ProductCard";
 import { shopCategories } from "@/data/shopCategories";
 import { getProductsByMainCategory } from "@/data/products";
+import { getSubcategoryInfo } from "@/data/subcategories";
 
 export default function DiningPage() {
   const [searchParams] = useSearchParams();
   const sub = searchParams.get("sub") ?? undefined;
   const cat = shopCategories.dining;
+  const subInfo = sub ? getSubcategoryInfo(sub, "dining") : undefined;
   const products = getProductsByMainCategory("dining", sub);
+
+  const pageTitle = subInfo ? subInfo.label : cat.title;
+  const pageDescription = subInfo ? subInfo.description : cat.description;
 
   return (
     <div className="min-h-screen bg-background">
@@ -21,11 +26,11 @@ export default function DiningPage() {
           <div className="absolute inset-0 bg-foreground/50" />
         </div>
         <div className="container relative z-10 text-center px-4">
-          <h1 className="font-display text-4xl md:text-6xl font-light text-white mb-4">{cat.title}</h1>
-          <p className="text-white/90 max-w-xl mx-auto">{cat.description}</p>
+          <h1 className="font-display text-4xl md:text-6xl font-light text-white mb-4">{pageTitle}</h1>
+          <p className="text-white/90 max-w-xl mx-auto">{pageDescription}</p>
         </div>
       </section>
-      <SectionWrapper title={sub ? `${sub.replace(/-/g, " ")}` : "All Dining"} className="bg-white">
+      <SectionWrapper className="bg-white">
         {products.length === 0 ? (
           <p className="text-center text-muted-foreground py-12">No products in this category yet.</p>
         ) : (
