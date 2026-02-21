@@ -1,110 +1,195 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingBag } from "lucide-react";
+import { Search, Heart, ShoppingBag, User, ChevronDown, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
-
-const navLinks: { label: string; path: string }[] = [
-  { label: "Furniture", path: "/furniture" },
-  { label: "Outdoor", path: "/outdoor" },
-  { label: "Office", path: "/office" },
-  { label: "Lighting", path: "/lighting" },
-  { label: "Rugs", path: "/rugs" },
-  { label: "Decor", path: "/decor" },
-  { label: "About", path: "/about" },
-];
+import { useWishlist } from "@/context/WishlistContext";
+import {
+  mainNavWithDropdowns,
+  mainNavLinks,
+} from "@/data/nav";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
   const { itemCount, openCart } = useCart();
+  const { count: wishlistCount } = useWishlist();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [location.pathname]);
+  useEffect(() => setMobileOpen(false), [location.pathname]);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-nav shadow-md" : "bg-transparent"
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        scrolled ? "bg-white/95 shadow-md backdrop-blur" : "bg-white"
       }`}
     >
-      <div className="container flex items-center justify-between h-16 px-6">
-        <Link to="/" className="font-display text-2xl font-light tracking-wide text-nav-foreground">
+      <div className="container flex h-16 items-center justify-between gap-4 px-4 md:px-6">
+        <Link to="/" className="font-display text-2xl font-light tracking-wide text-foreground shrink-0">
           DesignerZhub
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map(({ label, path }) => (
+        {/* Desktop: search bar when expanded */}
+        {searchOpen && (
+          <div className="hidden md:flex flex-1 max-w-md mx-4 animate-in fade-in duration-200">
+            <Input
+              type="search"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="rounded-xl h-10"
+              autoFocus
+            />
+            <Button variant="ghost" size="icon" className="shrink-0" onClick={() => setSearchOpen(false)}>
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+        )}
+
+        {/* Desktop: main nav */}
+        <nav className="hidden lg:flex items-center gap-1">
+          {mainNavWithDropdowns.map((item) => (
+            <div key={item.label} className="relative group">
+              <span className="flex items-center gap-0.5 px-4 py-2 text-sm font-medium text-foreground/90 hover:text-foreground cursor-default rounded-xl hover:bg-muted/50">
+                {item.label}
+                <ChevronDown className="h-4 w-4 opacity-70" />
+              </span>
+              <div className="absolute top-full left-0 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="rounded-2xl border bg-white shadow-lg py-2 min-w-[180px]">
+                  {item.items.map((sub) => (
+                    <Link
+                      key={sub.href}
+                      to={sub.href}
+                      className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted/50"
+                    >
+                      {sub.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+          {mainNavLinks.map((link) => (
             <Link
-              key={path}
-              to={path}
-              className={`text-sm transition-colors ${
-                location.pathname === path
-                  ? "text-nav-foreground font-medium"
-                  : "text-nav-foreground/80 hover:text-nav-foreground"
-              }`}
+              key={link.href}
+              to={link.href}
+              className="px-4 py-2 text-sm font-medium text-foreground/90 hover:text-foreground rounded-xl hover:bg-muted/50"
             >
-              {label}
+              {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={openCart}
-            className="relative p-3 -m-3 text-nav-foreground rounded-md hover:bg-nav-foreground/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-nav-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-nav min-h-[44px] min-w-[44px] flex items-center justify-center"
-            aria-label={`Open cart${itemCount > 0 ? `, ${itemCount} items` : ""}`}
+        {/* Right: icons */}
+        <div className="flex items-center gap-1 shrink-0">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-xl"
+            onClick={() => setSearchOpen((o) => !o)}
+            aria-label="Search"
           >
-            <ShoppingBag className="w-6 h-6" />
+            <Search className="h-5 w-5" />
+          </Button>
+          <Link to="/wishlist">
+            <Button variant="ghost" size="icon" className="rounded-xl relative" aria-label="Wishlist">
+              <Heart className="h-5 w-5" />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-primary text-primary-foreground text-[10px] font-medium flex items-center justify-center">
+                  {wishlistCount > 99 ? "99+" : wishlistCount}
+                </span>
+              )}
+            </Button>
+          </Link>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-xl relative"
+            onClick={openCart}
+            aria-label={`Cart, ${itemCount} items`}
+          >
+            <ShoppingBag className="h-5 w-5" />
             {itemCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-medium flex items-center justify-center">
+              <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-primary text-primary-foreground text-[10px] font-medium flex items-center justify-center">
                 {itemCount > 99 ? "99+" : itemCount}
               </span>
             )}
-          </button>
-          <button
-            type="button"
-            className="md:hidden p-3 -m-3 text-nav-foreground rounded-md hover:bg-nav-foreground/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-nav-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-nav min-h-[44px] min-w-[44px] flex items-center justify-center"
-            onClick={() => setMobileOpen(!mobileOpen)}
+          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="rounded-xl" aria-label="Account">
+                <User className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48 rounded-xl">
+              <DropdownMenuItem asChild>
+                <Link to="/login">Login</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/register">Register</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="lg:hidden rounded-xl"
+            onClick={() => setMobileOpen((o) => !o)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
           >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-            </svg>
-          </button>
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
         </div>
       </div>
 
+      {/* Mobile menu */}
       {mobileOpen && (
-        <nav className="md:hidden bg-nav border-t border-nav-foreground/10 px-6 py-4" aria-label="Mobile menu">
-          <ul className="space-y-1">
-            {navLinks.map(({ label, path }) => (
-              <li key={path}>
-                <Link
-                  to={path}
-                  className={`block py-3.5 px-2 text-sm rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-nav-foreground/40 focus-visible:ring-inset min-h-[44px] flex items-center transition-colors ${
-                    location.pathname === path
-                      ? "text-nav-foreground bg-nav-foreground/10"
-                      : "text-nav-foreground/90 hover:text-nav-foreground hover:bg-nav-foreground/5"
-                  }`}
-                >
-                  {label}
-                </Link>
-              </li>
+        <div className="lg:hidden border-t bg-white">
+          <nav className="container px-4 py-4 space-y-2">
+            {mainNavWithDropdowns.map((item) => (
+              <div key={item.label}>
+                <p className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  {item.label}
+                </p>
+                {item.items.map((sub) => (
+                  <Link
+                    key={sub.href}
+                    to={sub.href}
+                    className="block py-2.5 px-4 text-foreground rounded-xl hover:bg-muted/50"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {sub.label}
+                  </Link>
+                ))}
+              </div>
             ))}
-          </ul>
-        </nav>
+            {mainNavLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="block py-3 px-4 text-foreground font-medium rounded-xl hover:bg-muted/50"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
       )}
     </header>
   );
