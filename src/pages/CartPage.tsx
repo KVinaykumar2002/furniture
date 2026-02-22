@@ -54,9 +54,9 @@ export default function CartPage() {
                   <span>Subtotal</span>
                   <span className="font-semibold">₹{subtotal.toLocaleString("en-IN")}</span>
                 </p>
-                <button type="button" className="w-full h-12 rounded-2xl bg-primary text-primary-foreground font-medium hover:bg-primary/90">
+                <Link to="/checkout" className="block w-full h-12 rounded-2xl bg-primary text-primary-foreground font-medium hover:bg-primary/90 flex items-center justify-center">
                   Proceed to Checkout
-                </button>
+                </Link>
               </div>
             </div>
           </div>
