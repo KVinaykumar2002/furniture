@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/home/HeroSection";
@@ -20,15 +19,6 @@ export default function Index() {
       <BestSellers />
       <TestimonialsSection />
       <NewsletterSection />
-      <section id="contact" className="py-16 px-4 bg-muted/30">
-        <div className="container text-center">
-          <h2 className="font-display text-2xl font-light text-foreground mb-4">Get in touch</h2>
-          <p className="text-muted-foreground mb-6">81218 06688 · designerzhub.co.in</p>
-          <Link to="/stores" className="inline-flex items-center justify-center h-12 px-8 rounded-2xl border border-border font-medium hover:bg-muted">
-            Store Locator
-          </Link>
-        </div>
-      </section>
       <Footer />
     </div>
   );
