@@ -47,7 +47,7 @@ export default function CollectionsPage() {
       <Navbar />
       <div className="pt-24 pb-16 px-4 md:px-6">
         <div className="container">
-          <h1 className="font-display text-2xl md:text-3xl font-light text-foreground mb-8">
+          <h1 className="font-display text-2xl md:text-3xl font-light text-foreground mb-8 text-center">
             All Collections
           </h1>
 
