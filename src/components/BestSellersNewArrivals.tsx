@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Star, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import productSofa from "@/assets/product-sofa.jpg";
 import productBed from "@/assets/product-bed.jpg";
 import productLamp from "@/assets/cat-lighting.jpg";
@@ -83,16 +83,6 @@ const BestSellersNewArrivals = () => {
                 <p className="text-xs tracking-[0.08em] text-muted-foreground uppercase line-clamp-2 leading-relaxed mb-2">
                   {product.name}
                 </p>
-                <div className="flex items-center gap-1 mb-2">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-3.5 h-3.5 ${
-                        i < product.rating ? "fill-yellow-500 text-yellow-500" : "text-muted-foreground/30"
-                      }`}
-                    />
-                  ))}
-                </div>
                 <p className="text-sm font-medium text-foreground">
                   ₹{product.price.toLocaleString("en-IN")}
                 </p>

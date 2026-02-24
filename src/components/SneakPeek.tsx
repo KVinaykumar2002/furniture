@@ -1,4 +1,4 @@
-import { Plus, Star } from "lucide-react";
+import { Plus } from "lucide-react";
 import productSofa from "@/assets/product-sofa.jpg";
 import productBed from "@/assets/product-bed.jpg";
 import productLamp from "@/assets/cat-lighting.jpg";
@@ -48,14 +48,6 @@ const SneakPeek = () => {
               <p className="text-xs tracking-[0.1em] text-muted-foreground uppercase mb-2 line-clamp-2 leading-relaxed">
                 {product.name}
               </p>
-              {product.rating && (
-                <div className="flex items-center justify-center gap-1 mb-2">
-                  {Array.from({ length: product.rating }).map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
-                  ))}
-                  <span className="text-xs text-muted-foreground ml-1">({product.reviews})</span>
-                </div>
-              )}
               <div className="flex items-center justify-center gap-2">
                 <span className="text-sm text-foreground">₹{product.price.toLocaleString('en-IN')}</span>
                 <span className="text-sm text-muted-foreground/50 line-through">₹{product.oldPrice?.toLocaleString('en-IN')}</span>

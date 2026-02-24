@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { Star, ShoppingCart, Heart } from "lucide-react";
+import { ShoppingCart, Heart } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/context/CartContext";
@@ -35,12 +35,6 @@ export default function ProductDetailPage() {
           </div>
           <div>
             <h1 className="font-display text-2xl md:text-3xl font-light text-foreground mb-4">{product.name}</h1>
-            <div className="flex items-center gap-2 mb-4">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className={`h-5 w-5 ${i < product.rating ? "fill-amber-400 text-amber-400" : "text-muted-foreground/30"}`} />
-              ))}
-              <span className="text-sm text-muted-foreground">({product.reviews} reviews)</span>
-            </div>
             <div className="flex items-center gap-3 mb-6">
               <span className="text-2xl font-semibold text-foreground">₹{product.price.toLocaleString("en-IN")}</span>
               {product.oldPrice != null && (

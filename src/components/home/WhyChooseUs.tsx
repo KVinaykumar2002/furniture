@@ -11,19 +11,18 @@ const features = [
 export default function WhyChooseUs() {
   return (
     <SectionWrapper subtitle="Why us" title="Why Choose Us" className="bg-muted/30">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {features.map(({ icon: Icon, title, description }) => (
-          <div
-            key={title}
-            className="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow border border-border/50"
-          >
-            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-primary/10 flex items-center justify-center">
-              <Icon className="w-7 h-7 text-primary" />
+      <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-border/50">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {features.map(({ icon: Icon, title, description }) => (
+            <div key={title} className="text-center">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <Icon className="w-7 h-7 text-primary" />
+              </div>
+              <h3 className="font-display text-xl font-light text-foreground mb-2">{title}</h3>
+              <p className="text-sm text-muted-foreground">{description}</p>
             </div>
-            <h3 className="font-display text-xl font-light text-foreground mb-2">{title}</h3>
-            <p className="text-sm text-muted-foreground">{description}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </SectionWrapper>
   );

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Star, ShoppingCart, Heart } from "lucide-react";
+import { ShoppingCart, Heart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import type { Product } from "@/data/products";
@@ -71,15 +71,6 @@ export default function ProductCard({ product, imageAspect = "portrait" }: Produ
             {product.name}
           </p>
         </Link>
-        <div className="flex items-center gap-1 mb-2">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star
-              key={i}
-              className={`h-4 w-4 ${i < product.rating ? "fill-amber-400 text-amber-400" : "text-muted-foreground/30"}`}
-            />
-          ))}
-          <span className="text-xs text-muted-foreground ml-1">({product.reviews})</span>
-        </div>
         <div className="flex items-center gap-2 flex-wrap">
           <span className="text-base font-semibold text-foreground">₹{product.price.toLocaleString("en-IN")}</span>
           {product.oldPrice != null && (
