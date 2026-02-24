@@ -6,16 +6,20 @@ import type { Product } from "@/data/products";
 
 interface ProductCardProps {
   product: Product;
+  imageAspect?: "portrait" | "square";
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, imageAspect = "portrait" }: ProductCardProps) {
   const { addItem } = useCart();
   const { isInWishlist, toggle } = useWishlist();
   const inWishlist = isInWishlist(product.id);
 
   return (
     <article className="group bg-white rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-xl transition-all duration-300">
-      <Link to={`/product/${product.id}`} className="block relative aspect-[4/5] overflow-hidden">
+      <Link
+        to={`/product/${product.id}`}
+        className={`block relative overflow-hidden ${imageAspect === "square" ? "aspect-square" : "aspect-[4/5]"}`}
+      >
         <img
           src={product.image}
           alt={product.name}

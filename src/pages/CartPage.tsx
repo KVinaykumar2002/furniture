@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Minus, Plus, X } from "lucide-react";
+import { ArrowLeft, Minus, Plus, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/context/CartContext";
@@ -11,7 +11,16 @@ export default function CartPage() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="container py-8 md:py-12 px-4 pt-24">
-        <h1 className="font-display text-2xl font-light text-foreground mb-8">Your Cart</h1>
+        <div className="flex items-center gap-4 mb-8">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-border bg-white text-foreground hover:bg-muted transition-colors"
+            aria-label="Back to home"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </Link>
+          <h1 className="font-display text-2xl font-light text-foreground">Your Cart</h1>
+        </div>
         {items.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-muted-foreground mb-6">Your cart is empty.</p>
