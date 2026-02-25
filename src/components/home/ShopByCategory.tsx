@@ -4,15 +4,15 @@ import SectionWrapper from "@/components/SectionWrapper";
 import ProductCard from "@/components/ProductCard";
 import { getFeaturedProducts, getBestSellers } from "@/data/products";
 
-type TabId = "ramadan-deals" | "new-arrivals";
+type TabId = "best-deals" | "new-arrivals";
 
 const tabs: { id: TabId; label: string }[] = [
-  { id: "ramadan-deals", label: "RAMADAN DEALS" },
+  { id: "best-deals", label: "BEST DEALS" },
   { id: "new-arrivals", label: "NEW ARRIVALS" },
 ];
 
 export default function ShopByCategory() {
-  const [activeTab, setActiveTab] = useState<TabId>("ramadan-deals");
+  const [activeTab, setActiveTab] = useState<TabId>("best-deals");
 
   return (
     <SectionWrapper
@@ -41,7 +41,7 @@ export default function ShopByCategory() {
         </div>
 
         <div className="w-full">
-          {activeTab === "ramadan-deals" && (
+          {activeTab === "best-deals" && (
             <div className="animate-in fade-in duration-300">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-7 max-w-6xl mx-auto">
                 {getFeaturedProducts(4).map((product) => (

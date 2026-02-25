@@ -21,7 +21,7 @@ const SneakPeek = () => {
           </p>
           <div className="flex items-center justify-center gap-10">
             <button className="font-display text-2xl md:text-4xl tracking-[0.15em] text-foreground border-b-2 border-primary pb-2 uppercase">
-              Ramadan Deals
+              Best Deals
             </button>
             <button className="font-display text-2xl md:text-4xl tracking-[0.15em] text-muted-foreground/40 pb-2 uppercase hover:text-muted-foreground/60 transition-colors">
               New Arrivals
