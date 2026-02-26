@@ -19,8 +19,7 @@ export type MainCategorySlug =
   | "wall-covering"
   | "toilet"
   | "scent-diffusers"
-  | "fitout-joinery"
-  | "curtains";
+  | "fitout-joinery";
 
 export type FurnitureSubSlug = "indoor" | "outdoor" | "office";
 
@@ -34,7 +33,6 @@ export const mainCategoryTabs: { slug: MainCategorySlug; label: string }[] = [
   { slug: "toilet", label: "Toilet" },
   { slug: "scent-diffusers", label: "Scent Diffusers" },
   { slug: "fitout-joinery", label: "Fitout / Joinery" },
-  { slug: "curtains", label: "Curtains" },
 ];
 
 export const furnitureSubTabs: { slug: FurnitureSubSlug; label: string }[] = [

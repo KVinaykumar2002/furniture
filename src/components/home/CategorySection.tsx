@@ -61,7 +61,7 @@ export default function CategorySection() {
         <div className="max-w-2xl mx-auto h-px bg-border mb-8" />
 
         {/* Main category tabs - single line, spacing preserved */}
-        <div className="flex flex-nowrap items-center justify-center gap-6 md:gap-10 mb-6 overflow-x-auto">
+        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mb-6">
           {mainCategoryTabs.map((tab) => (
             <button
               key={tab.slug}
