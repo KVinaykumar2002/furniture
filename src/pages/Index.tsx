@@ -5,6 +5,7 @@ import ShopByCategory from "@/components/home/ShopByCategory";
 import CategoryBanners from "@/components/home/CategoryBanners";
 import CompletedProjectsAndShowrooms from "@/components/home/CompletedProjectsAndShowrooms";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
+import PromoStrip from "@/components/home/PromoStrip";
 import BestSellers from "@/components/home/BestSellers";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import NewsletterSection from "@/components/home/NewsletterSection";
@@ -18,6 +19,7 @@ export default function Index() {
       <CategoryBanners />
       <CompletedProjectsAndShowrooms />
       <WhyChooseUs />
+      <PromoStrip />
       <BestSellers />
       <TestimonialsSection />
       <NewsletterSection />

@@ -1,13 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
 import catSofas from "@/assets/cat-sofas.jpg";
+import heroNew3 from "@/assets/hero-new-3.jpg";
+import heroNewFirst from "@/assets/hero-new-first.jpg";
 
 const slides = [
   {
-    image: hero1,
+    image: heroNewFirst,
     title: "Modern Furniture for Inspired Living",
     subtitle: "Curate your space with elegance. Premium pieces for every room.",
   },
@@ -17,7 +19,7 @@ const slides = [
     subtitle: "Discover collections that transform your home into a sanctuary.",
   },
   {
-    image: catSofas,
+    image: heroNew3,
     title: "Living Spaces Reimagined",
     subtitle: "Sofas, chairs, and living room essentials crafted for everyday luxury.",
   },
@@ -126,20 +128,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <button
-        onClick={goPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 transition-colors"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="w-5 h-5" />
-      </button>
-      <button
-        onClick={goNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 transition-colors"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="w-5 h-5" />
-      </button>
+
 
       {/* Progress-bar style indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
