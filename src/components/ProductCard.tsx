@@ -2,20 +2,30 @@ import { Link } from "react-router-dom";
 import { ShoppingCart, Heart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import type { Product } from "@/data/products";
 
 interface ProductCardProps {
   product: Product;
+  index?: number;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { addItem } = useCart();
   const { isInWishlist, toggle } = useWishlist();
   const inWishlist = isInWishlist(product.id);
+  const ref = useScrollReveal<HTMLElement>();
+
+  // Stagger delay: 80ms per card, max 320ms
+  const staggerDelay = Math.min(index * 80, 320);
 
   return (
-    <article className="group flex flex-col">
-      {/* Image — square, sharp corners, no shadow */}
+    <article
+      ref={ref}
+      className="group flex flex-col animate-on-scroll"
+      style={{ transitionDelay: `${staggerDelay}ms` }}
+    >
+      {/* Image — square, sharp corners, no shadow, soft hover scale */}
       <Link
         to={`/product/${product.id}`}
         className="block relative aspect-square overflow-hidden flex-shrink-0"
@@ -23,7 +33,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-[1.03]"
         />
 
         {/* Wishlist — always visible */}

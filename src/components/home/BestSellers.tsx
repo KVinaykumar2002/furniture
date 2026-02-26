@@ -8,8 +8,8 @@ export default function BestSellers() {
   return (
     <SectionWrapper subtitle="Top picks" title="Best Sellers" className="bg-white">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {products.map((product, index) => (
+          <ProductCard key={product.id} product={product} index={index} />
         ))}
       </div>
     </SectionWrapper>

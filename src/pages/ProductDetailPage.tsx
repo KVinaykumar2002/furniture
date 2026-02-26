@@ -62,12 +62,12 @@ export default function ProductDetailPage() {
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover animate-fade-in-image"
             />
           </div>
 
           {/* Product Info — flat, no card */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center opacity-0 animate-content-reveal">
             <h1 className="font-display text-2xl md:text-3xl font-light text-foreground mb-6">
               {product.name}
             </h1>
@@ -89,7 +89,7 @@ export default function ProductDetailPage() {
                     image: product.image,
                   })
                 }
-                className="inline-flex items-center gap-2 h-12 px-8 bg-neutral-900 text-white font-medium hover:bg-neutral-800 transition-colors uppercase tracking-wide text-sm"
+                className="inline-flex items-center gap-2 h-12 px-8 bg-neutral-900 text-white font-medium hover:bg-neutral-800 hover:-translate-y-0.5 transition-all duration-300 ease-in-out uppercase tracking-wide text-sm"
               >
                 <ShoppingCart className="h-5 w-5" />
                 Add to Cart
@@ -97,9 +97,9 @@ export default function ProductDetailPage() {
               <button
                 type="button"
                 onClick={() => toggle(product.id)}
-                className={`inline-flex items-center gap-2 h-12 px-6 border transition-colors ${isInWishlist(product.id)
-                    ? "bg-red-50 text-red-600 border-red-200"
-                    : "border-neutral-300 text-neutral-700 hover:border-neutral-400"
+                className={`inline-flex items-center gap-2 h-12 px-6 border transition-all duration-300 ease-in-out hover:-translate-y-0.5 ${isInWishlist(product.id)
+                  ? "bg-red-50 text-red-600 border-red-200"
+                  : "border-neutral-300 text-neutral-700 hover:border-neutral-400"
                   }`}
               >
                 <Heart
@@ -131,8 +131,8 @@ export default function ProductDetailPage() {
             You May Also Like
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {relatedProducts.map((p) => (
-              <ProductCard key={p.id} product={p} />
+            {relatedProducts.map((p, index) => (
+              <ProductCard key={p.id} product={p} index={index} />
             ))}
           </div>
         </div>

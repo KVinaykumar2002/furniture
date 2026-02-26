@@ -35,8 +35,8 @@ export default function DiningPage() {
           <p className="text-center text-muted-foreground py-12">No products in this category yet.</p>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {products.map((p) => (
-              <ProductCard key={p.id} product={p} />
+            {products.map((p, index) => (
+              <ProductCard key={p.id} product={p} index={index} />
             ))}
           </div>
         )}

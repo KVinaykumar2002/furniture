@@ -265,7 +265,7 @@ export default function CollectionsPage() {
                   layout === "list" && "flex flex-col gap-4"
                 )}
               >
-                {products.map((p) =>
+                {products.map((p, index) =>
                   layout === "list" ? (
                     <Link
                       key={p.id}
@@ -286,7 +286,7 @@ export default function CollectionsPage() {
                       </div>
                     </Link>
                   ) : (
-                    <ProductCard key={p.id} product={p} />
+                    <ProductCard key={p.id} product={p} index={index} />
                   )
                 )}
               </div>

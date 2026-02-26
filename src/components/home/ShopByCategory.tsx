@@ -43,8 +43,8 @@ export default function ShopByCategory() {
           {activeTab === "best-deals" && (
             <div className="animate-in fade-in duration-300">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-7">
-                {getFeaturedProducts(4).map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                {getFeaturedProducts(4).map((product, index) => (
+                  <ProductCard key={product.id} product={product} index={index} />
                 ))}
               </div>
               <div className="text-center mt-8">
@@ -60,8 +60,8 @@ export default function ShopByCategory() {
           {activeTab === "new-arrivals" && (
             <div className="animate-in fade-in duration-300">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-7">
-                {getBestSellers(4).map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                {getBestSellers(4).map((product, index) => (
+                  <ProductCard key={product.id} product={product} index={index} />
                 ))}
               </div>
               <div className="text-center mt-8">

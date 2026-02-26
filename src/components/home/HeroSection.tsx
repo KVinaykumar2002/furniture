@@ -91,24 +91,24 @@ export default function HeroSection() {
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4">
         <h1
           className={`font-display text-4xl md:text-6xl lg:text-7xl font-light tracking-wide text-white text-shadow-hero mb-4 transition-all duration-700 ${textVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4"
             }`}
         >
           {slides[current].title}
         </h1>
         <p
           className={`text-lg md:text-xl text-white/90 font-light mb-8 max-w-xl transition-all duration-700 delay-150 ${textVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4"
             }`}
         >
           {slides[current].subtitle}
         </p>
         <div
           className={`flex flex-wrap items-center justify-center gap-4 transition-all duration-700 delay-300 ${textVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4"
             }`}
         >
           <Link
