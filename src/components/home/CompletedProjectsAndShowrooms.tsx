@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import { Building2, Sofa, Users, MapPin } from "lucide-react";
-import { stores } from "@/data/stores";
 import CategorySection from "@/components/home/CategorySection";
+import CategoryBanners from "@/components/home/CategoryBanners";
 
 const stats = [
   { icon: Building2, label: "Fit-out", value: "553" },
@@ -10,7 +9,6 @@ const stats = [
 ];
 
 export default function CompletedProjectsAndShowrooms() {
-  const showroomStores = stores.slice(0, 3);
 
   return (
     <div className="bg-muted/30">
@@ -35,37 +33,19 @@ export default function CompletedProjectsAndShowrooms() {
         </div>
       </section>
 
-      {/* Visit Our Showrooms - Dark strip: scrolls right to left, seamless loop */}
+      {/* Visit Our Showroom - Dark strip marquee */}
       <section className="w-full overflow-hidden">
         <div className="bg-foreground text-primary-foreground py-5 md:py-6 min-h-[4.5rem] md:min-h-[5rem] flex items-center overflow-hidden">
           <div className="flex animate-marquee-left whitespace-nowrap w-max will-change-transform">
             {[1, 2, 3].map((copy) => (
               <div key={copy} className="flex items-center gap-8 md:gap-12 px-6 shrink-0">
                 <p className="text-base md:text-lg font-semibold tracking-[0.2em] uppercase">
-                  Visit our showrooms at
+                  VISIT OUR SHOWROOM AT &nbsp;
+                  <span className="inline-flex items-center gap-1">
+                    <MapPin className="w-5 h-5 text-destructive inline-block" />
+                    KONDAPUR, HYDERABAD
+                  </span>
                 </p>
-                {showroomStores.map((store) => (
-                  <Link
-                    key={`${copy}-${store.id}`}
-                    to={`/stores/${store.id}`}
-                    className="inline-flex items-center gap-2 text-base md:text-lg font-medium tracking-wide uppercase hover:underline"
-                  >
-                    <MapPin className="w-5 h-5 text-destructive shrink-0" />
-                    <span>{store.name}, {store.city}</span>
-                  </Link>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* Second strip: light style, scrolls right (opposite of first strip) */}
-        <div className="bg-white py-5 md:py-6 min-h-[4.5rem] md:min-h-[5rem] flex items-center border-b border-border/50 overflow-hidden">
-          <div className="flex animate-marquee-right whitespace-nowrap w-max will-change-transform">
-            {[1, 2, 3].map((copy) => (
-              <div key={copy} className="flex items-center gap-8 md:gap-12 px-6 shrink-0">
-                <span className="text-base md:text-lg text-muted-foreground uppercase tracking-wide font-medium">
-                  Now Open Outlet in Kondapur
-                </span>
               </div>
             ))}
           </div>
@@ -74,6 +54,7 @@ export default function CompletedProjectsAndShowrooms() {
 
       {/* Category section: main tabs, sub tabs, 2x4 grid */}
       <CategorySection />
+      <CategoryBanners />
     </div>
   );
 }
