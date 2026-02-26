@@ -58,16 +58,14 @@ export default function CompletedProjectsAndShowrooms() {
             ))}
           </div>
         </div>
-        {/* Light strip: scrolls left to right, seamless loop */}
+        {/* Second strip: light style, scrolls right (opposite of first strip) */}
         <div className="bg-white py-5 md:py-6 min-h-[4.5rem] md:min-h-[5rem] flex items-center border-b border-border/50 overflow-hidden">
           <div className="flex animate-marquee-right whitespace-nowrap w-max will-change-transform">
             {[1, 2, 3].map((copy) => (
               <div key={copy} className="flex items-center gap-8 md:gap-12 px-6 shrink-0">
-                {showroomStores.map((store) => (
-                  <span key={`${copy}-${store.id}`} className="text-base md:text-lg text-muted-foreground uppercase tracking-wide font-medium">
-                    Now Open · Outlet in {store.name}
-                  </span>
-                ))}
+                <span className="text-base md:text-lg text-muted-foreground uppercase tracking-wide font-medium">
+                  Now Open Outlet in Kondapur
+                </span>
               </div>
             ))}
           </div>
