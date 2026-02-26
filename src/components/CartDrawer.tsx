@@ -28,7 +28,7 @@ const CartDrawer = () => {
                   key={item.id}
                   className="flex gap-4 py-3 border-b border-border last:border-0"
                 >
-                  <div className="w-20 h-20 shrink-0 overflow-hidden rounded-sm bg-muted">
+                  <div className="w-20 h-20 shrink-0 overflow-hidden bg-muted">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -39,11 +39,8 @@ const CartDrawer = () => {
                     <p className="text-sm font-medium text-foreground line-clamp-2">
                       {item.name}
                     </p>
-                    <p className="text-sm text-primary mt-1">
-                      ₹{item.price.toLocaleString("en-IN")}
-                    </p>
                     <div className="flex items-center gap-2 mt-2">
-                      <div className="flex items-center border border-input rounded-md">
+                      <div className="flex items-center border border-input">
                         <button
                           type="button"
                           onClick={() =>
@@ -85,7 +82,7 @@ const CartDrawer = () => {
           <div className="border-t border-border pt-4 space-y-4">
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">Subtotal</span>
-              <span className="font-medium">₹{subtotal.toLocaleString("en-IN")}</span>
+              <span className="font-medium">{items.length} {items.length === 1 ? 'item' : 'items'}</span>
             </div>
             <Button className="w-full" size="lg" asChild>
               <Link to="/checkout" onClick={closeCart}>

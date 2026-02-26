@@ -3,7 +3,7 @@ import { Instagram, Facebook, Twitter, Phone, Mail } from "lucide-react";
 import { stores } from "@/data/stores";
 
 const CONTACT_PHONE = "8121806688";
-const CONTACT_EMAIL = "designerzhub.co.in";
+const CONTACT_EMAIL = "info@designerzhub.co.in";
 
 const socialLinks = [
   { icon: Instagram, label: "Instagram", href: "#" },
@@ -29,7 +29,7 @@ export default function Footer() {
                 <Phone className="h-4 w-4 shrink-0" strokeWidth={1.5} />
                 <span>{CONTACT_PHONE}</span>
               </a>
-              <a href={`https://${CONTACT_EMAIL}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#2c2c2c] transition-colors break-all">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center gap-2 hover:text-[#2c2c2c] transition-colors break-all">
                 <Mail className="h-4 w-4 shrink-0" strokeWidth={1.5} />
                 <span>{CONTACT_EMAIL}</span>
               </a>
@@ -42,7 +42,7 @@ export default function Footer() {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg border border-[#c9c7c2] bg-white/60 flex items-center justify-center text-[#4a4a4a] hover:text-[#2c2c2c] hover:bg-white/80 transition-colors"
+                  className="w-10 h-10 border border-[#c9c7c2] bg-white/60 flex items-center justify-center text-[#4a4a4a] hover:text-[#2c2c2c] hover:bg-white/80 transition-colors"
                 >
                   <Icon className="h-4 w-4" strokeWidth={1.5} />
                 </a>

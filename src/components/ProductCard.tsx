@@ -6,47 +6,44 @@ import type { Product } from "@/data/products";
 
 interface ProductCardProps {
   product: Product;
-  imageAspect?: "portrait" | "square";
 }
 
-export default function ProductCard({ product, imageAspect = "portrait" }: ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
   const { isInWishlist, toggle } = useWishlist();
   const inWishlist = isInWishlist(product.id);
 
   return (
-    <article className="group bg-white rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-xl transition-all duration-300">
+    <article className="group flex flex-col">
+      {/* Image — square, sharp corners, no shadow */}
       <Link
         to={`/product/${product.id}`}
-        className={`block relative overflow-hidden ${imageAspect === "square" ? "aspect-square" : "aspect-[4/5]"}`}
+        className="block relative aspect-square overflow-hidden flex-shrink-0"
       >
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover"
         />
-        {product.save != null && product.save > 0 && (
-          <span className="absolute top-3 left-3 bg-primary text-primary-foreground text-xs font-bold px-2.5 py-1 rounded-lg">
-            SAVE ₹{product.save}
-          </span>
-        )}
-        {product.isNew && (
-          <span className="absolute top-3 right-12 bg-foreground text-primary-foreground text-xs font-medium px-2.5 py-1 rounded-lg">
-            New
-          </span>
-        )}
+
+        {/* Wishlist — always visible */}
         <button
           type="button"
           onClick={(e) => {
             e.preventDefault();
             toggle(product.id);
           }}
-          className="absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white shadow"
+          className="absolute top-3 right-3 w-9 h-9 bg-white/80 backdrop-blur-sm flex items-center justify-center transition-colors hover:bg-white"
           aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
         >
-          <Heart className={`h-5 w-5 ${inWishlist ? "fill-primary text-primary" : "text-foreground"}`} />
+          <Heart
+            className={`h-4 w-4 transition-colors ${inWishlist ? "fill-red-500 text-red-500" : "text-neutral-700"
+              }`}
+          />
         </button>
-        <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+
+        {/* Add to Cart — visible on mobile, hover on desktop */}
+        <div className="absolute bottom-0 left-0 right-0 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
           <button
             type="button"
             onClick={(e) => {
@@ -58,27 +55,21 @@ export default function ProductCard({ product, imageAspect = "portrait" }: Produ
                 image: product.image,
               });
             }}
-            className="w-full py-3 bg-foreground text-primary-foreground text-sm font-medium rounded-xl flex items-center justify-center gap-2 hover:bg-foreground/90 transition-colors"
+            className="w-full py-2.5 bg-neutral-900 text-white text-xs font-medium tracking-wider uppercase flex items-center justify-center gap-2 hover:bg-neutral-800 transition-colors"
           >
-            <ShoppingCart className="h-4 w-4" />
+            <ShoppingCart className="h-3.5 w-3.5" />
             Add to Cart
           </button>
         </div>
       </Link>
-      <div className="p-4">
-        <Link to={`/product/${product.id}`}>
-          <p className="text-sm font-medium text-foreground line-clamp-2 mb-2 hover:text-primary transition-colors">
+
+      {/* Product info — flat, no card, no background */}
+      <div className="pt-3 pb-1">
+        <Link to={`/product/${product.id}`} className="block">
+          <p className="text-xs font-normal text-neutral-600 uppercase tracking-wide line-clamp-2 leading-relaxed">
             {product.name}
           </p>
         </Link>
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-base font-semibold text-foreground">₹{product.price.toLocaleString("en-IN")}</span>
-          {product.oldPrice != null && (
-            <span className="text-sm text-muted-foreground line-through">
-              ₹{product.oldPrice.toLocaleString("en-IN")}
-            </span>
-          )}
-        </div>
       </div>
     </article>
   );

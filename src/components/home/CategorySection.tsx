@@ -67,11 +67,10 @@ export default function CategorySection() {
               key={tab.slug}
               type="button"
               onClick={() => setMainActive(tab.slug)}
-              className={`shrink-0 text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 -mb-0.5 ${
-                mainActive === tab.slug
-                  ? "text-foreground border-foreground"
-                  : "text-muted-foreground border-transparent hover:text-foreground/80"
-              }`}
+              className={`shrink-0 text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 -mb-0.5 ${mainActive === tab.slug
+                ? "text-foreground border-foreground"
+                : "text-muted-foreground border-transparent hover:text-foreground/80"
+                }`}
             >
               {tab.label}
             </button>
@@ -88,11 +87,10 @@ export default function CategorySection() {
                   <button
                     type="button"
                     onClick={() => setSubActive(tab.slug)}
-                    className={`text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 -mb-0.5 ${
-                      subActive === tab.slug
-                        ? "text-foreground border-foreground"
-                        : "text-muted-foreground border-transparent hover:text-foreground/80"
-                    }`}
+                    className={`text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 -mb-0.5 ${subActive === tab.slug
+                      ? "text-foreground border-foreground"
+                      : "text-muted-foreground border-transparent hover:text-foreground/80"
+                      }`}
                   >
                     {tab.label}
                   </button>
@@ -108,11 +106,11 @@ export default function CategorySection() {
                   to={item.href}
                   className="group block text-center"
                 >
-                  <div className="aspect-square rounded-xl overflow-hidden bg-white border border-border/50 shadow-sm mb-3 md:mb-4 group-hover:shadow-md transition-shadow">
+                  <div className="aspect-square overflow-hidden mb-3 md:mb-4">
                     <img
                       src={item.image}
                       alt={item.label}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <p className="text-xs md:text-sm font-medium tracking-wide text-muted-foreground uppercase">
@@ -132,14 +130,13 @@ export default function CategorySection() {
                 <ProductCard
                   key={product.id}
                   product={product}
-                  imageAspect="square"
                 />
               ))}
             </div>
             <div className="text-center mt-8">
               <Link
                 to="/collections"
-                className="inline-flex items-center justify-center h-11 px-6 rounded-2xl border border-muted-foreground/40 text-muted-foreground font-medium hover:bg-muted/50 hover:text-foreground transition-colors text-sm uppercase tracking-wide"
+                className="inline-flex items-center justify-center h-11 px-6 border border-muted-foreground/40 text-muted-foreground font-medium hover:bg-muted/50 hover:text-foreground transition-colors text-sm uppercase tracking-wide"
               >
                 View All
               </Link>

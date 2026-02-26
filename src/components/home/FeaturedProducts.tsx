@@ -21,7 +21,7 @@ export default function FeaturedProducts() {
       <div className="text-center mt-10">
         <Link
           to="/collections"
-          className="inline-flex items-center justify-center h-12 px-8 rounded-2xl border border-muted-foreground/30 text-muted-foreground font-medium hover:bg-muted/50 transition-colors"
+          className="inline-flex items-center justify-center h-12 px-8 border border-muted-foreground/30 text-muted-foreground font-medium hover:bg-muted/50 transition-colors uppercase tracking-wide text-sm"
         >
           View All
         </Link>

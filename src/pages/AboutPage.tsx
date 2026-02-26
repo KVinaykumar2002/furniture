@@ -30,7 +30,7 @@ export default function AboutPage() {
             From modern minimalism to classic elegance, we help you create a home that reflects your taste and lifestyle. Visit our showroom or explore online—we are here to help you design the space you have always imagined.
           </p>
         </section>
-        <Link to="/#contact" className="inline-flex items-center justify-center h-12 px-8 rounded-2xl border border-foreground/40 font-medium hover:bg-muted/50">
+        <Link to="/#contact" className="inline-flex items-center justify-center h-12 px-8 border border-foreground/40 font-medium hover:bg-muted/50 uppercase tracking-wide text-sm">
           Contact Us
         </Link>
       </div>

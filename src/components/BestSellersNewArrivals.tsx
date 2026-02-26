@@ -29,39 +29,34 @@ const BestSellersNewArrivals = () => {
           <button
             type="button"
             onClick={() => setActiveTab("bestsellers")}
-            className={`font-display text-xl md:text-2xl tracking-[0.15em] uppercase pb-2 border-b-2 transition-colors ${
-              activeTab === "bestsellers"
-                ? "text-foreground border-primary"
+            className={`font-display text-xl md:text-2xl tracking-[0.15em] uppercase pb-2 border-b-2 transition-colors ${activeTab === "bestsellers"
+                ? "text-foreground border-foreground"
                 : "text-muted-foreground/60 border-transparent hover:text-muted-foreground"
-            }`}
+              }`}
           >
             Best Sellers
           </button>
           <button
             type="button"
             onClick={() => setActiveTab("newarrivals")}
-            className={`font-display text-xl md:text-2xl tracking-[0.15em] uppercase pb-2 border-b-2 transition-colors ${
-              activeTab === "newarrivals"
-                ? "text-foreground border-primary"
+            className={`font-display text-xl md:text-2xl tracking-[0.15em] uppercase pb-2 border-b-2 transition-colors ${activeTab === "newarrivals"
+                ? "text-foreground border-foreground"
                 : "text-muted-foreground/60 border-transparent hover:text-muted-foreground"
-            }`}
+              }`}
           >
             New Arrivals
           </button>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {list.map((product) => (
-            <article
-              key={product.id}
-              className="group bg-card rounded-sm overflow-hidden border border-border/50 hover:shadow-lg transition-all duration-300"
-            >
-              <div className="relative aspect-[4/5] overflow-hidden">
+            <article key={product.id} className="group flex flex-col">
+              <div className="relative aspect-square overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute bottom-0 left-0 right-0 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                   <button
                     type="button"
                     onClick={() =>
@@ -72,19 +67,16 @@ const BestSellersNewArrivals = () => {
                         image: product.image,
                       })
                     }
-                    className="w-full py-2.5 bg-foreground text-primary-foreground text-xs font-medium uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-foreground/90 transition-colors"
+                    className="w-full py-2.5 bg-neutral-900 text-white text-xs font-medium uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-neutral-800 transition-colors"
                   >
                     <ShoppingCart className="w-4 h-4" />
                     Add to Cart
                   </button>
                 </div>
               </div>
-              <div className="p-4">
-                <p className="text-xs tracking-[0.08em] text-muted-foreground uppercase line-clamp-2 leading-relaxed mb-2">
+              <div className="pt-3">
+                <p className="text-xs tracking-[0.08em] text-muted-foreground uppercase line-clamp-2 leading-relaxed">
                   {product.name}
-                </p>
-                <p className="text-sm font-medium text-foreground">
-                  ₹{product.price.toLocaleString("en-IN")}
                 </p>
               </div>
             </article>

@@ -17,7 +17,7 @@ export default function WishlistPage() {
         {wishlistProducts.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-muted-foreground mb-6">Your wishlist is empty.</p>
-            <Link to="/collections" className="inline-flex items-center justify-center h-12 px-8 rounded-2xl bg-primary text-primary-foreground font-medium">
+            <Link to="/collections" className="inline-flex items-center justify-center h-12 px-8 bg-neutral-900 text-white font-medium uppercase tracking-wide text-sm">
               Shop Now
             </Link>
           </div>

@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
-  const { items, subtotal, clearCart } = useCart();
+  const { items, clearCart } = useCart();
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     fullName: "",
@@ -44,9 +44,9 @@ export default function CheckoutPage() {
       address,
       "",
       "*Order Summary*",
-      ...items.map((item) => `• ${item.name} x ${item.quantity} - ₹${(item.price * item.quantity).toLocaleString("en-IN")}`),
+      ...items.map((item) => `• ${item.name} x ${item.quantity}`),
       "",
-      `*Subtotal: ₹${subtotal.toLocaleString("en-IN")}*`,
+      `*Total Items: ${items.reduce((sum, i) => sum + i.quantity, 0)}*`,
     ];
     return lines.join("\n");
   };
@@ -68,7 +68,10 @@ export default function CheckoutPage() {
         <Navbar />
         <div className="container py-24 px-4 text-center">
           <p className="text-muted-foreground mb-6">Your cart is empty. Add items to checkout.</p>
-          <Link to="/collections" className="inline-flex items-center justify-center h-12 px-8 rounded-2xl bg-primary text-primary-foreground font-medium">
+          <Link
+            to="/collections"
+            className="inline-flex items-center justify-center h-12 px-8 bg-neutral-900 text-white font-medium uppercase tracking-wide text-sm"
+          >
             Shop Now
           </Link>
         </div>
@@ -98,7 +101,7 @@ export default function CheckoutPage() {
                   value={form.fullName}
                   onChange={handleChange}
                   placeholder="Enter your full name"
-                  className="rounded-xl h-11"
+                  className="rounded-none h-11"
                   required
                 />
               </div>
@@ -111,7 +114,7 @@ export default function CheckoutPage() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="your@email.com"
-                  className="rounded-xl h-11"
+                  className="rounded-none h-11"
                   required
                 />
               </div>
@@ -124,7 +127,7 @@ export default function CheckoutPage() {
                   value={form.phone}
                   onChange={handleChange}
                   placeholder="10-digit mobile number"
-                  className="rounded-xl h-11"
+                  className="rounded-none h-11"
                   required
                 />
               </div>
@@ -142,7 +145,7 @@ export default function CheckoutPage() {
                   value={form.addressLine1}
                   onChange={handleChange}
                   placeholder="Street, building, flat no."
-                  className="rounded-xl h-11"
+                  className="rounded-none h-11"
                   required
                 />
               </div>
@@ -154,7 +157,7 @@ export default function CheckoutPage() {
                   value={form.addressLine2}
                   onChange={handleChange}
                   placeholder="Landmark, area"
-                  className="rounded-xl h-11"
+                  className="rounded-none h-11"
                 />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -166,7 +169,7 @@ export default function CheckoutPage() {
                     value={form.city}
                     onChange={handleChange}
                     placeholder="City"
-                    className="rounded-xl h-11"
+                    className="rounded-none h-11"
                     required
                   />
                 </div>
@@ -178,7 +181,7 @@ export default function CheckoutPage() {
                     value={form.state}
                     onChange={handleChange}
                     placeholder="State"
-                    className="rounded-xl h-11"
+                    className="rounded-none h-11"
                     required
                   />
                 </div>
@@ -191,7 +194,7 @@ export default function CheckoutPage() {
                   value={form.pincode}
                   onChange={handleChange}
                   placeholder="6-digit pincode"
-                  className="rounded-xl h-11 max-w-[180px]"
+                  className="rounded-none h-11 max-w-[180px]"
                   required
                 />
               </div>
@@ -200,10 +203,10 @@ export default function CheckoutPage() {
 
           <div className="pt-4 border-t border-border">
             <p className="flex justify-between text-foreground mb-6">
-              <span>Subtotal</span>
-              <span className="font-semibold">₹{subtotal.toLocaleString("en-IN")}</span>
+              <span>Items</span>
+              <span className="font-semibold">{items.reduce((sum, i) => sum + i.quantity, 0)}</span>
             </p>
-            <Button type="submit" className="w-full h-12 rounded-2xl" size="lg">
+            <Button type="submit" className="w-full h-12 rounded-none" size="lg">
               Place order
             </Button>
           </div>

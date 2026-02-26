@@ -15,7 +15,7 @@ export default function StoresPage() {
             <Link
               key={store.id}
               to={`/stores/${store.id}`}
-              className="block p-6 rounded-2xl border border-border bg-white hover:shadow-lg transition-shadow"
+              className="block p-6 border border-border bg-white hover:shadow-lg transition-shadow"
             >
               <div className="flex gap-4">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">

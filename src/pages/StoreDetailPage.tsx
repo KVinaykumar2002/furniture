@@ -27,7 +27,7 @@ export default function StoreDetailPage() {
       <div className="container py-8 md:py-12 px-4 pt-24">
         <Link to="/stores" className="text-sm text-muted-foreground hover:text-foreground mb-6 inline-block">← Store Locator</Link>
         <div className="flex gap-4 mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+          <div className="w-14 h-14 bg-primary/10 flex items-center justify-center shrink-0">
             <MapPin className="w-7 h-7 text-primary" />
           </div>
           <div>
@@ -35,7 +35,7 @@ export default function StoreDetailPage() {
             <p className="text-muted-foreground">{store.address}, {store.city}</p>
           </div>
         </div>
-        <div className="rounded-2xl overflow-hidden border border-border bg-muted">
+        <div className="overflow-hidden border border-border bg-muted">
           <iframe
             title={`Map for ${store.name}`}
             src={store.mapEmbedUrl}
@@ -51,7 +51,7 @@ export default function StoreDetailPage() {
           href={store.mapLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center h-12 px-8 rounded-2xl bg-primary text-primary-foreground font-medium hover:bg-primary/90 mt-6"
+          className="inline-flex items-center justify-center h-12 px-8 bg-neutral-900 text-white font-medium hover:bg-neutral-800 transition-colors uppercase tracking-wide text-sm mt-6"
         >
           Open in Google Maps
         </a>

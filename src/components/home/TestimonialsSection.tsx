@@ -120,7 +120,7 @@ export default function TestimonialsSection() {
           {testimonials.map((t, i) => (
             <article
               key={i}
-              className="flex-shrink-0 w-[320px] md:w-[360px] rounded-xl bg-[#FBF9F6] shadow-md border border-[#E7E0D8] overflow-hidden flex flex-col"
+              className="flex-shrink-0 w-[320px] md:w-[360px] bg-[#FBF9F6] shadow-md border border-[#E7E0D8] overflow-hidden flex flex-col"
               style={{ scrollSnapAlign: "start" }}
             >
               {/* Media area (top ~60%) */}
