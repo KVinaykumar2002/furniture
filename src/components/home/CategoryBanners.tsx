@@ -37,48 +37,65 @@ const banners: BannerData[] = [
 
 export default function CategoryBanners() {
     return (
-        <section className="py-16 md:py-24 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
-                    {banners.map((banner, index) => (
+        <section className="w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col w-full mx-auto max-w-[1600px] gap-12 lg:gap-20">
+                {banners.map((banner, index) => {
+                    // Define background colors based on category to match design
+                    let bgColor = "bg-white";
+                    if (banner.category === "Living") bgColor = "bg-[#d8e2c8]"; // Light green
+                    if (banner.category === "Dining") bgColor = "bg-[#dbcfc4]"; // Light tan/brown
+                    if (banner.category === "Bedroom") bgColor = "bg-[#e2deb8]"; // Light beige/yellow
+
+                    const isImageFirst = index % 2 === 0;
+
+                    return (
                         <div
                             key={index}
-                            className="group relative overflow-hidden aspect-[4/5] sm:aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] flex flex-col justify-end"
+                            className={`flex flex-col md:flex-row items-stretch w-full group ${bgColor} rounded-[2rem] overflow-hidden shadow-sm`}
                         >
-                            {/* Background Image */}
-                            <img
-                                src={banner.image}
-                                alt={`${banner.category} Collection - ${banner.title}`}
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                            />
-
-                            {/* Overlay for text readability (subtle gradient from bottom) */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-90 pointer-events-none" />
-
-                            {/* Content Block */}
-                            <div className="relative z-10 flex flex-col items-center justify-end p-8 md:p-10 text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
-                                <span className="text-white/80 text-xs tracking-[0.2em] font-semibold uppercase mb-3 block">
+                            {/* Text Content Block (30%) */}
+                            <div
+                                className={`w-full md:w-[30%] flex flex-col justify-center p-8 md:p-12 lg:p-16 ${isImageFirst ? 'order-2' : 'order-1'} md:order-none`}
+                                style={{ order: isImageFirst ? 2 : 1 }}
+                            >
+                                <h3 className="text-[#3b2b2b] text-4xl md:text-5xl lg:text-6xl font-bold tracking-widest uppercase mb-4">
                                     {banner.category}
-                                </span>
-                                <h3 className="text-white text-3xl md:text-4xl font-bold tracking-widest uppercase mb-2">
-                                    {banner.title}
                                 </h3>
-                                <p className="text-white/90 text-sm md:text-base tracking-[0.15em] font-medium uppercase mb-8">
-                                    {banner.tagline}
+                                <div className="mb-6">
+                                    <span className="text-[#4a3b3b] text-xl md:text-2xl font-light uppercase block leading-tight">
+                                        {banner.title}
+                                    </span>
+                                    <span className="text-[#4a3b3b] text-xl md:text-2xl font-light uppercase block leading-tight">
+                                        {banner.tagline}
+                                    </span>
+                                </div>
+                                <p className="text-[#5c4d4d] text-sm md:text-base mb-8 max-w-[280px]">
+                                    {banner.category === "Living" && "Create a living space that defines comfort and elegance."}
+                                    {banner.category === "Dining" && "Set the stage for meaningful conversations and memorable meals."}
+                                    {banner.category === "Bedroom" && "Transform your bedroom into a sanctuary of rest and beauty."}
                                 </p>
 
-                                <div className="mt-auto">
+                                <div>
                                     <Link
                                         to={banner.href}
-                                        className="inline-block bg-white text-black px-8 py-3.5 text-xs font-bold uppercase tracking-[0.15em] hover:bg-neutral-900 hover:text-white transition-colors duration-300"
+                                        className="inline-block bg-[#D8C38B] text-white px-8 py-3.5 text-xs font-bold uppercase hover:bg-[#c2a969] transition-colors duration-300 rounded-full w-fit"
                                     >
                                         Explore Now
                                     </Link>
                                 </div>
                             </div>
+
+                            {/* Image Block (70%) */}
+                            <div className="w-full md:w-[70%] relative aspect-[16/9] md:aspect-[21/9] lg:aspect-[24/9] overflow-hidden" style={{ order: isImageFirst ? 1 : 2 }}>
+                                <img
+                                    src={banner.image}
+                                    alt={`${banner.category} Collection - ${banner.title}`}
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
                         </div>
-                    ))}
-                </div>
+                    );
+                })}
             </div>
         </section>
     );
