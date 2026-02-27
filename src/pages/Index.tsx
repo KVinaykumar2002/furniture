@@ -1,7 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/home/HeroSection";
+import CategorySection from "@/components/home/CategorySection";
 import ShopByCategory from "@/components/home/ShopByCategory";
+import CategoryBanners from "@/components/home/CategoryBanners";
 import CompletedProjectsAndShowrooms from "@/components/home/CompletedProjectsAndShowrooms";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import PromoStrip from "@/components/home/PromoStrip";
@@ -15,7 +17,9 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
+      <CategorySection />
       <ShopByCategory />
+      <CategoryBanners />
       <CompletedProjectsAndShowrooms />
       <WhyChooseUs />
       <PromoStrip />

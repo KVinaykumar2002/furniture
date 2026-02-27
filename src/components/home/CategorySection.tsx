@@ -47,14 +47,14 @@ export default function CategorySection() {
                 color: "inherit",
               }}
             >
-              {/* Circle */}
+              {/* Square Box */}
               <div
-                className="shop-by-category-circle"
+                className="shop-by-category-square"
                 style={{
                   width: "100%",
                   maxWidth: "110px",
                   aspectRatio: "1 / 1",
-                  borderRadius: "50%",
+                  borderRadius: "0",
                   overflow: "hidden",
                   backgroundColor: cat.isNewArrivals ? "#1a3a6b" : "#f0f0f0",
                   display: "flex",
@@ -83,10 +83,9 @@ export default function CategorySection() {
                     src={cat.image}
                     alt={cat.label}
                     style={{
-                      width: "80%",
-                      height: "80%",
+                      width: "100%",
+                      height: "100%",
                       objectFit: "cover",
-                      borderRadius: "50%",
                     }}
                   />
                 )}
@@ -120,7 +119,7 @@ export default function CategorySection() {
             grid-template-columns: repeat(8, 1fr) !important;
           }
         }
-        .shop-by-category-item:hover .shop-by-category-circle {
+        .shop-by-category-item:hover .shop-by-category-square {
           transform: scale(1.06);
           box-shadow: 0 4px 16px rgba(0,0,0,0.10);
         }

@@ -51,7 +51,7 @@ export default function CategoryBanners() {
                     return (
                         <div
                             key={index}
-                            className={`flex flex-col md:flex-row items-stretch w-full group ${bgColor} rounded-[2rem] overflow-hidden shadow-sm`}
+                            className={`flex flex-col md:flex-row items-stretch w-full group ${bgColor} overflow-hidden shadow-sm`}
                         >
                             {/* Text Content Block (30%) */}
                             <div
@@ -78,7 +78,7 @@ export default function CategoryBanners() {
                                 <div>
                                     <Link
                                         to={banner.href}
-                                        className="inline-block bg-[#D8C38B] text-white px-8 py-3.5 text-xs font-bold uppercase hover:bg-[#c2a969] transition-colors duration-300 rounded-full w-fit"
+                                        className="inline-block bg-[#D8C38B] text-white px-8 py-3.5 text-xs font-bold uppercase hover:bg-[#c2a969] transition-colors duration-300 rounded-none w-fit"
                                     >
                                         Explore Now
                                     </Link>
