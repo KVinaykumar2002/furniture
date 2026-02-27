@@ -1,11 +1,12 @@
-
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import storeBg from "@/assets/our-stores-bg.jpg";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import storeShowroom from "@/assets/our-stores-showroom.png";
 
 export default function OurStores() {
+    const ref = useScrollReveal<HTMLElement>(0.08);
     return (
-        <section className="w-full py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+        <section ref={ref} className="animate-on-scroll w-full py-8 md:py-12 px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col w-full mx-auto max-w-[1400px]">
                 <div className="flex flex-col md:flex-row items-stretch w-full group bg-[#dbcfc4] overflow-hidden shadow-sm">
 
@@ -39,8 +40,8 @@ export default function OurStores() {
                     {/* Image Block (70%) */}
                     <div className="w-full md:w-[70%] relative aspect-[16/9] md:aspect-[2.8/1] lg:aspect-[3.2/1] overflow-hidden order-1 md:order-2">
                         <img
-                            src={storeBg}
-                            alt="Wooden Street Custom Furniture Store"
+                            src={storeShowroom}
+                            alt="Our furniture showroom — living rooms, dining sets, and displays"
                             className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />

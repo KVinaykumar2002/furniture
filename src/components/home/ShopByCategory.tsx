@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import SectionWrapper from "@/components/SectionWrapper";
 import ProductCard from "@/components/ProductCard";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { getFeaturedProducts, getBestSellers } from "@/data/products";
 
 type TabId = "best-deals" | "new-arrivals";
@@ -13,8 +14,10 @@ const tabs: { id: TabId; label: string }[] = [
 
 export default function ShopByCategory() {
   const [activeTab, setActiveTab] = useState<TabId>("best-deals");
+  const ref = useScrollReveal<HTMLDivElement>(0.08);
 
   return (
+    <div ref={ref} className="animate-on-scroll">
     <SectionWrapper
       id="categories"
       subtitle="Featured Collections"
@@ -77,5 +80,6 @@ export default function ShopByCategory() {
         </div>
       </div>
     </SectionWrapper>
+    </div>
   );
 }

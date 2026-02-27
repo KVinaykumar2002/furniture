@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Star, ChevronLeft, ChevronRight, Play, CheckCircle2, X } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 type Testimonial = {
   name: string;
@@ -81,6 +82,7 @@ const testimonials: Testimonial[] = [
 export default function TestimonialsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [playingId, setPlayingId] = useState<number | null>(null);
+  const revealRef = useScrollReveal<HTMLElement>(0.08);
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -89,7 +91,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="relative bg-[#E7E0D8] py-12 md:py-16 border-t border-[#D5CDC3]">
+    <section ref={revealRef} className="animate-on-scroll relative bg-[#E7E0D8] py-12 md:py-16 border-t border-[#D5CDC3]">
       {/* Section title */}
       <div className="container px-4 md:px-6 text-center mb-10 md:mb-12">
         <p className="tracking-[0.2em] text-muted-foreground uppercase font-sans text-xs mb-2">

@@ -113,6 +113,23 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Stagger children when parent becomes visible */
+  .animate-on-scroll .stagger-1 { transition-delay: 0.05s; }
+  .animate-on-scroll .stagger-2 { transition-delay: 0.1s; }
+  .animate-on-scroll .stagger-3 { transition-delay: 0.15s; }
+  .animate-on-scroll .stagger-4 { transition-delay: 0.2s; }
+  .animate-on-scroll .stagger-5 { transition-delay: 0.25s; }
+  .animate-on-scroll .stagger-6 { transition-delay: 0.3s; }
+  .animate-on-scroll.is-visible .animate-on-scroll-child {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .animate-on-scroll-child {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 @layer components {
@@ -128,7 +145,11 @@
     transform: none;
     transition: none;
   }
-
+  .animate-on-scroll-child {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
   .animate-fade-up,
   .animate-fade-in-image,
   .animate-content-reveal {

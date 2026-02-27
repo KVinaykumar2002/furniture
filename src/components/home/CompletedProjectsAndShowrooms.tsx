@@ -1,4 +1,6 @@
 import { Building2, Sofa, Users, MapPin, Phone } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
 const stats = [
   { icon: Building2, label: "Fit-out", value: "553" },
   { icon: Sofa, label: "Furnishing", value: "10,154" },
@@ -6,9 +8,9 @@ const stats = [
 ];
 
 export default function CompletedProjectsAndShowrooms() {
-
+  const ref = useScrollReveal<HTMLDivElement>(0.08);
   return (
-    <div className="bg-muted/30">
+    <div ref={ref} className="animate-on-scroll bg-muted/30">
       {/* Completed Projects */}
       <section className="bg-white py-12 md:py-16 px-4 md:px-6">
         <div className="container">

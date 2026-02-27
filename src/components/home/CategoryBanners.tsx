@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // Unique Unsplash images for category banners (higher res for larger display)
 const BANNER_IMAGES = {
@@ -40,8 +41,9 @@ const banners: BannerData[] = [
 ];
 
 export default function CategoryBanners() {
+    const ref = useScrollReveal<HTMLElement>(0.08);
     return (
-        <section className="w-full py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+        <section ref={ref} className="animate-on-scroll w-full py-20 md:py-28 px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col w-full mx-auto max-w-[1920px] gap-16 lg:gap-24">
                 {banners.map((banner, index) => {
                     // Define background colors based on category to match design

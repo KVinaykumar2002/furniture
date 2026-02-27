@@ -1,9 +1,11 @@
 import { useState } from "react";
 import SectionWrapper from "@/components/SectionWrapper";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Mail } from "lucide-react";
 
 export default function NewsletterSection() {
   const [email, setEmail] = useState("");
+  const ref = useScrollReveal<HTMLDivElement>(0.08);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -11,6 +13,7 @@ export default function NewsletterSection() {
   };
 
   return (
+    <div ref={ref} className="animate-on-scroll">
     <SectionWrapper className="border-t border-border">
       <div className="max-w-xl mx-auto text-center">
         <div className="w-14 h-14 mx-auto mb-6 bg-primary/10 flex items-center justify-center">
@@ -36,5 +39,6 @@ export default function NewsletterSection() {
         </form>
       </div>
     </SectionWrapper>
+    </div>
   );
 }

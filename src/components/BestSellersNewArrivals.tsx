@@ -31,7 +31,7 @@ const BestSellersNewArrivals = () => {
               : "text-muted-foreground/60 border-transparent hover:text-muted-foreground"
               }`}
           >
-            Best Sellers
+            Recently Viewed
           </button>
           <button
             type="button"

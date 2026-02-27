@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import {
   mainCategoryTabs,
   furnitureSubTabs,
@@ -26,10 +27,12 @@ export default function CategorySection() {
     () => (isFurniture ? [] : getProductsByCategory(mainCategory as CategorySlug)),
     [mainCategory, isFurniture]
   );
+  const ref = useScrollReveal<HTMLElement>(0.08);
 
   return (
     <section
-      className="py-10 md:py-14 px-4 md:px-6"
+      ref={ref}
+      className="animate-on-scroll py-10 md:py-14 px-4 md:px-6"
       style={{ backgroundColor: "#f8f6f3" }}
     >
       <div className="container max-w-7xl mx-auto">

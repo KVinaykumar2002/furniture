@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Users, Truck, ShieldCheck, Factory, Store } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 function getTargetDate() {
     const d = new Date();
@@ -42,9 +43,10 @@ const stats = [
 export default function PromoStrip() {
     const { days, hrs, mins, secs } = useCountdown();
     const pad = (n: number) => String(n).padStart(2, "0");
+    const ref = useScrollReveal<HTMLElement>(0.08);
 
     return (
-        <section className="w-full bg-card shadow-md py-5">
+        <section ref={ref} className="animate-on-scroll w-full bg-card shadow-md py-5">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
 
