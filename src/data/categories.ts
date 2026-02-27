@@ -1,11 +1,4 @@
-import catSofas from "@/assets/cat-sofas.jpg";
-import catBedroom from "@/assets/cat-bedroom.jpg";
-import catDining from "@/assets/cat-dining.jpg";
-import catOffice from "@/assets/cat-office.jpg";
-import catOutdoor from "@/assets/cat-outdoor.jpg";
-import catLighting from "@/assets/cat-lighting.jpg";
-import catRugs from "@/assets/cat-rugs.jpg";
-import catDecor from "@/assets/cat-decor.jpg";
+// Local images removed to ensure 100% unique category images
 
 export type CategorySlug = "furniture" | "outdoor" | "office" | "lighting" | "rugs" | "decor";
 
@@ -21,37 +14,37 @@ export const categories: Record<CategorySlug, Category> = {
     slug: "furniture",
     title: "Furniture",
     description: "Sofas, chairs, tables, and living room essentials. Timeless designs for every home.",
-    image: catSofas,
+    image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800",
   },
   outdoor: {
     slug: "outdoor",
     title: "Outdoor",
     description: "Patio sets, garden furniture, and outdoor living. Built to last through the seasons.",
-    image: catOutdoor,
+    image: "https://images.unsplash.com/photo-1499933374294-4584851497cc?auto=format&fit=crop&q=80&w=800",
   },
   office: {
     slug: "office",
     title: "Office",
     description: "Desks, ergonomic chairs, and storage. Create a productive and stylish workspace.",
-    image: catOffice,
+    image: "https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?auto=format&fit=crop&q=80&w=800",
   },
   lighting: {
     slug: "lighting",
     title: "Lighting",
     description: "Pendant lights, floor lamps, and table lamps. Set the mood in every room.",
-    image: catLighting,
+    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&q=80&w=800",
   },
   rugs: {
     slug: "rugs",
     title: "Rugs",
     description: "Handpicked rugs and runners. Add warmth and texture to your floors.",
-    image: catRugs,
+    image: "https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&q=80&w=800",
   },
   decor: {
     slug: "decor",
     title: "Decor",
     description: "Mirrors, art, and accents. The finishing touches that make a house a home.",
-    image: catDecor,
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800",
   },
 };
 

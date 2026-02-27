@@ -1,14 +1,4 @@
-import catSofas from "@/assets/cat-sofas.jpg";
-import catBedroom from "@/assets/cat-bedroom.jpg";
-import catDining from "@/assets/cat-dining.jpg";
-import catOffice from "@/assets/cat-office.jpg";
-import catOutdoor from "@/assets/cat-outdoor.jpg";
-import catLighting from "@/assets/cat-lighting.jpg";
-import catRugs from "@/assets/cat-rugs.jpg";
-import catDecor from "@/assets/cat-decor.jpg";
-import productSofa from "@/assets/product-sofa.jpg";
-import productBed from "@/assets/product-bed.jpg";
-import productTable from "@/assets/product-table.jpg";
+// Local images removed to ensure 100% unique category images
 
 export type MainCategorySlug =
   | "rugs"
@@ -50,38 +40,38 @@ export interface CategoryGridItem {
 
 /** 2x4 grid for Furniture > Indoor — each item has a unique image */
 export const indoorFurnitureGrid: CategoryGridItem[] = [
-  { slug: "all", label: "All Furniture", image: catSofas, href: "/collections" },
-  { slug: "sofas", label: "Sofas", image: productSofa, href: "/living?sub=sofas" },
-  { slug: "bedsteads", label: "Bedsteads", image: catBedroom, href: "/bedroom?sub=beds" },
-  { slug: "mattress", label: "Mattress", image: productBed, href: "/bedroom" },
-  { slug: "bedside-tables", label: "Bedside Tables", image: productTable, href: "/bedroom" },
-  { slug: "dressers-mirrors", label: "Dressers & Mirrors", image: catDecor, href: "/bedroom" },
-  { slug: "lounge-chairs", label: "Lounge Chairs", image: catLighting, href: "/living?sub=relax-chairs" },
-  { slug: "sideboard", label: "Sideboard / Storage", image: catDining, href: "/dining" },
+  { slug: "all", label: "All Furniture", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "sofas", label: "Sofas", image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=600", href: "/living?sub=sofas" },
+  { slug: "bedsteads", label: "Bedsteads", image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=600", href: "/bedroom?sub=beds" },
+  { slug: "mattress", label: "Mattress", image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&q=80&w=600", href: "/bedroom" },
+  { slug: "bedside-tables", label: "Bedside Tables", image: "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=600", href: "/bedroom" },
+  { slug: "dressers-mirrors", label: "Dressers & Mirrors", image: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&q=80&w=600", href: "/bedroom" },
+  { slug: "lounge-chairs", label: "Lounge Chairs", image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=600", href: "/living?sub=relax-chairs" },
+  { slug: "sideboard", label: "Sideboard / Storage", image: "https://images.unsplash.com/photo-1595514535215-188b0a94b4cf?auto=format&fit=crop&q=80&w=600", href: "/dining" },
 ];
 
 /** Outdoor grid — each item has a unique image */
 export const outdoorFurnitureGrid: CategoryGridItem[] = [
-  { slug: "all", label: "All Outdoor", image: catOutdoor, href: "/collections" },
-  { slug: "seating", label: "Outdoor Seating", image: catSofas, href: "/collections" },
-  { slug: "dining", label: "Outdoor Dining", image: catDining, href: "/dining" },
-  { slug: "loungers", label: "Loungers", image: productSofa, href: "/collections" },
-  { slug: "umbrellas", label: "Umbrellas", image: catDecor, href: "/collections" },
-  { slug: "planters", label: "Planters", image: catRugs, href: "/collections" },
-  { slug: "accessories", label: "Accessories", image: catLighting, href: "/collections" },
-  { slug: "storage", label: "Storage", image: catBedroom, href: "/collections" },
+  { slug: "all", label: "All Outdoor", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "seating", label: "Outdoor Seating", image: "https://images.unsplash.com/photo-1599596652431-8f5eb22304dc?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "dining", label: "Outdoor Dining", image: "https://images.unsplash.com/photo-1620319515594-e3dc164b162f?auto=format&fit=crop&q=80&w=600", href: "/dining" },
+  { slug: "loungers", label: "Loungers", image: "https://images.unsplash.com/photo-1560114928-40f1f1eb26a0?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "umbrellas", label: "Umbrellas", image: "https://images.unsplash.com/photo-1533038590840-1c73a87ec118?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "planters", label: "Planters", image: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "accessories", label: "Accessories", image: "https://images.unsplash.com/photo-1582282577017-e8544ab6f0fb?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "storage", label: "Storage", image: "https://images.unsplash.com/photo-1628131346067-17eb48a04fac?auto=format&fit=crop&q=80&w=600", href: "/collections" },
 ];
 
 /** Office grid — each item has a unique image */
 export const officeFurnitureGrid: CategoryGridItem[] = [
-  { slug: "all", label: "All Office", image: catOffice, href: "/collections" },
-  { slug: "desks", label: "Desks", image: productTable, href: "/collections" },
-  { slug: "chairs", label: "Office Chairs", image: catSofas, href: "/collections" },
-  { slug: "storage", label: "Storage", image: catDining, href: "/collections" },
-  { slug: "tables", label: "Meeting Tables", image: catBedroom, href: "/collections" },
-  { slug: "shelving", label: "Shelving", image: catDecor, href: "/collections" },
-  { slug: "screens", label: "Screens", image: catLighting, href: "/collections" },
-  { slug: "accessories", label: "Accessories", image: catRugs, href: "/collections" },
+  { slug: "all", label: "All Office", image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "desks", label: "Desks", image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "chairs", label: "Office Chairs", image: "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "storage", label: "Storage", image: "https://images.unsplash.com/photo-1598442299849-0d9c4de4ba7d?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "tables", label: "Meeting Tables", image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "shelving", label: "Shelving", image: "https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "screens", label: "Screens", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600", href: "/collections" },
+  { slug: "accessories", label: "Accessories", image: "https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&q=80&w=600", href: "/collections" },
 ];
 
 export function getFurnitureGridBySub(sub: FurnitureSubSlug): CategoryGridItem[] {
@@ -110,19 +100,19 @@ export interface ShopByCategoryItem {
 
 export const shopByCategories: ShopByCategoryItem[] = [
   { slug: "new-arrivals", label: "New Arrivals", image: "", href: "/collections", isNewArrivals: true },
-  { slug: "sofas", label: "Sofas", image: catSofas, href: "/living?sub=sofas" },
-  { slug: "sofa-cum-beds", label: "Sofa Cum Beds", image: productSofa, href: "/living?sub=sofas" },
-  { slug: "coffee-tables", label: "Coffee Tables", image: productTable, href: "/living?sub=coffee-tables" },
-  { slug: "beds", label: "Beds", image: catBedroom, href: "/bedroom?sub=beds" },
-  { slug: "wardrobes", label: "Wardrobes", image: catOffice, href: "/bedroom" },
-  { slug: "tv-units", label: "TV Units", image: catDecor, href: "/living" },
-  { slug: "recliners", label: "Recliners", image: productBed, href: "/living?sub=relax-chairs" },
-  { slug: "dining-sets", label: "Dining Sets", image: catDining, href: "/dining?sub=dining-tables" },
-  { slug: "lounge-chairs", label: "Lounge Chairs", image: catLighting, href: "/living?sub=relax-chairs" },
-  { slug: "shoe-racks", label: "Shoe Racks", image: catRugs, href: "/collections" },
-  { slug: "bookshelves", label: "Bookshelves", image: catOutdoor, href: "/collections" },
-  { slug: "study-tables", label: "Study Tables", image: productTable, href: "/collections" },
-  { slug: "chest-of-drawers", label: "Chest of Drawers", image: catDecor, href: "/bedroom" },
-  { slug: "sideboards", label: "Sideboards", image: catDining, href: "/dining" },
-  { slug: "mattresses", label: "Mattresses", image: productBed, href: "/bedroom?sub=beds" },
+  { slug: "sofas", label: "Sofas", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=400", href: "/living?sub=sofas" },
+  { slug: "sofa-cum-beds", label: "Sofa Cum Beds", image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=400", href: "/living?sub=sofas" },
+  { slug: "coffee-tables", label: "Coffee Tables", image: "https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&q=80&w=400", href: "/living?sub=coffee-tables" },
+  { slug: "beds", label: "Beds", image: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80&w=400", href: "/bedroom?sub=beds" },
+  { slug: "wardrobes", label: "Wardrobes", image: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&q=80&w=400", href: "/bedroom" },
+  { slug: "tv-units", label: "TV Units", image: "https://images.unsplash.com/photo-1600607684527-6fb886090705?auto=format&fit=crop&q=80&w=400", href: "/living" },
+  { slug: "recliners", label: "Recliners", image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&q=80&w=400", href: "/living?sub=relax-chairs" },
+  { slug: "dining-sets", label: "Dining Sets", image: "https://images.unsplash.com/photo-1617806118233-18e1c0945594?auto=format&fit=crop&q=80&w=400", href: "/dining?sub=dining-tables" },
+  { slug: "lounge-chairs", label: "Lounge Chairs", image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=400", href: "/living?sub=relax-chairs" },
+  { slug: "shoe-racks", label: "Shoe Racks", image: "https://images.unsplash.com/photo-1595526114101-1e90e79391de?auto=format&fit=crop&q=80&w=400", href: "/collections" },
+  { slug: "bookshelves", label: "Bookshelves", image: "https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&q=80&w=400", href: "/collections" },
+  { slug: "study-tables", label: "Study Tables", image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&q=80&w=400", href: "/collections" },
+  { slug: "chest-of-drawers", label: "Chest of Drawers", image: "https://images.unsplash.com/photo-1595514535215-188b0a94b4cf?auto=format&fit=crop&q=80&w=400", href: "/bedroom" },
+  { slug: "sideboards", label: "Sideboards", image: "https://images.unsplash.com/photo-1604578762246-4113259e20af?auto=format&fit=crop&q=80&w=400", href: "/dining" },
+  { slug: "mattresses", label: "Mattresses", image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&q=80&w=400", href: "/bedroom?sub=beds" },
 ];

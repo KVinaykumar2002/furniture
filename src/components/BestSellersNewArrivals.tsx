@@ -1,19 +1,16 @@
 import { useState } from "react";
 import { ShoppingCart } from "lucide-react";
-import productSofa from "@/assets/product-sofa.jpg";
-import productBed from "@/assets/product-bed.jpg";
-import productLamp from "@/assets/cat-lighting.jpg";
-import productTable from "@/assets/product-table.jpg";
+// Local images removed to ensure 100% unique product images
 import { useCart } from "@/context/CartContext";
 
 const bestSellers = [
-  { id: "bs-1", name: "Classic Oak Sideboard", image: productSofa, price: 24999, rating: 5 },
-  { id: "bs-2", name: "Velvet Lounge Chair", image: productBed, price: 18999, rating: 4 },
+  { id: "bs-1", name: "Classic Oak Sideboard", image: "https://images.unsplash.com/photo-1595514535215-188b0a94b4cf?auto=format&fit=crop&q=80&w=600", price: 24999, rating: 5 },
+  { id: "bs-2", name: "Velvet Lounge Chair", image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=600", price: 18999, rating: 4 },
 ];
 
 const newArrivals = [
-  { id: "na-1", name: "Minimal Pendant Lamp", image: productLamp, price: 4999, rating: 5 },
-  { id: "na-2", name: "Scandinavian Coffee Table", image: productTable, price: 12999, rating: 4 },
+  { id: "na-1", name: "Minimal Pendant Lamp", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&q=80&w=600", price: 4999, rating: 5 },
+  { id: "na-2", name: "Scandinavian Coffee Table", image: "https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&q=80&w=600", price: 12999, rating: 4 },
 ];
 
 const BestSellersNewArrivals = () => {
@@ -30,8 +27,8 @@ const BestSellersNewArrivals = () => {
             type="button"
             onClick={() => setActiveTab("bestsellers")}
             className={`font-display text-xl md:text-2xl tracking-[0.15em] uppercase pb-2 border-b-2 transition-colors ${activeTab === "bestsellers"
-                ? "text-foreground border-foreground"
-                : "text-muted-foreground/60 border-transparent hover:text-muted-foreground"
+              ? "text-foreground border-foreground"
+              : "text-muted-foreground/60 border-transparent hover:text-muted-foreground"
               }`}
           >
             Best Sellers
@@ -40,8 +37,8 @@ const BestSellersNewArrivals = () => {
             type="button"
             onClick={() => setActiveTab("newarrivals")}
             className={`font-display text-xl md:text-2xl tracking-[0.15em] uppercase pb-2 border-b-2 transition-colors ${activeTab === "newarrivals"
-                ? "text-foreground border-foreground"
-                : "text-muted-foreground/60 border-transparent hover:text-muted-foreground"
+              ? "text-foreground border-foreground"
+              : "text-muted-foreground/60 border-transparent hover:text-muted-foreground"
               }`}
           >
             New Arrivals

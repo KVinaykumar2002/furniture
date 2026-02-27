@@ -1,14 +1,11 @@
 import { Plus } from "lucide-react";
-import productSofa from "@/assets/product-sofa.jpg";
-import productBed from "@/assets/product-bed.jpg";
-import productLamp from "@/assets/cat-lighting.jpg";
-import productTable from "@/assets/product-table.jpg";
+// Local images removed to ensure 100% unique product images
 
 const products = [
-  { name: "MOVO SERVICE TROLLEY - JK-D208", image: productSofa, price: 2035, oldPrice: 2325, save: 290, rating: 5, reviews: 3 },
-  { name: "43 PIECES PASSIFOY DINING SET - PAS", image: productBed, price: 1015, oldPrice: 1410, save: 395 },
-  { name: "39-PIECE 6 PERSON TERRA DINNERWARE & STONEWARE SET", image: productLamp, price: 875, oldPrice: 1345, save: 470 },
-  { name: "37-PIECE 6 PERSON HAVEN EBARZA DINNERWARE SET", image: productTable, price: 755, oldPrice: 1165, save: 410 },
+  { name: "MOVO SERVICE TROLLEY - JK-D208", image: "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?auto=format&fit=crop&q=80&w=600", price: 2035, oldPrice: 2325, save: 290, rating: 5, reviews: 3 },
+  { name: "43 PIECES PASSIFOY DINING SET - PAS", image: "https://images.unsplash.com/photo-1617806118233-18e1c0945594?auto=format&fit=crop&q=80&w=600", price: 1015, oldPrice: 1410, save: 395 },
+  { name: "39-PIECE 6 PERSON TERRA DINNERWARE & STONEWARE SET", image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&q=80&w=600", price: 875, oldPrice: 1345, save: 470 },
+  { name: "37-PIECE 6 PERSON HAVEN EBARZA DINNERWARE SET", image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80&w=600", price: 755, oldPrice: 1165, save: 410 },
 ];
 
 const SneakPeek = () => {
