@@ -1,6 +1,18 @@
 // Local images removed to ensure 100% unique category images
 
-export type CategorySlug = "furniture" | "outdoor" | "office" | "lighting" | "rugs" | "decor";
+export type CategorySlug =
+  | "furniture"
+  | "outdoor"
+  | "office"
+  | "lighting"
+  | "rugs"
+  | "decor"
+  | "kitchenware"
+  | "wall-covering"
+  | "toilet"
+  | "scent-diffusers"
+  | "fitout-joinery"
+  | "curtains";
 
 export interface Category {
   slug: CategorySlug;
@@ -46,6 +58,45 @@ export const categories: Record<CategorySlug, Category> = {
     description: "Mirrors, art, and accents. The finishing touches that make a house a home.",
     image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800",
   },
+  kitchenware: {
+    slug: "kitchenware",
+    title: "Kitchenware",
+    description: "Kitchen essentials and dining accessories. Quality pieces for everyday use.",
+    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&q=80&w=800",
+  },
+  "wall-covering": {
+    slug: "wall-covering",
+    title: "Wall Covering",
+    description: "Wallpapers and wall coverings. Transform your walls with style.",
+    image: "https://images.unsplash.com/photo-1615529328331-f8917597711f?auto=format&fit=crop&q=80&w=800",
+  },
+  toilet: {
+    slug: "toilet",
+    title: "Toilet",
+    description: "Bathroom and toilet fixtures. Modern and functional solutions.",
+    image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&q=80&w=800",
+  },
+  "scent-diffusers": {
+    slug: "scent-diffusers",
+    title: "Scent Diffusers",
+    description: "Fragrance diffusers and home scents. Create a welcoming atmosphere.",
+    image: "https://images.unsplash.com/photo-1602874801006-4e411e29f52f?auto=format&fit=crop&q=80&w=800",
+  },
+  "fitout-joinery": {
+    slug: "fitout-joinery",
+    title: "Fitout / Joinery",
+    description: "Custom joinery and fit-out solutions. Built to measure for your space.",
+    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=800",
+  },
+  curtains: {
+    slug: "curtains",
+    title: "Curtains",
+    description: "Curtains and window treatments. Style and privacy for every room.",
+    image: "https://images.unsplash.com/photo-1524484485832-b57e5047d2b6?auto=format&fit=crop&q=80&w=800",
+  },
 };
 
-export const categorySlugs: CategorySlug[] = ["furniture", "outdoor", "office", "lighting", "rugs", "decor"];
+export const categorySlugs: CategorySlug[] = [
+  "furniture", "outdoor", "office", "lighting", "rugs", "decor",
+  "kitchenware", "wall-covering", "toilet", "scent-diffusers", "fitout-joinery", "curtains",
+];

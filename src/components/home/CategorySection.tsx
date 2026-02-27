@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import {
   mainCategoryTabs,
@@ -7,16 +7,25 @@ import {
   type MainCategorySlug,
   type FurnitureSubSlug,
 } from "@/data/categorySection";
+import { getProductsByCategory } from "@/data/products";
+import type { CategorySlug } from "@/data/categories";
+
+const FURNITURE_SLUG: MainCategorySlug = "furniture";
 
 /**
- * Category section matching the reference: CATEGORIES heading, one-line main nav,
- * INDOOR / OUTDOOR / OFFICE sub-nav, and 3×4 product grid. All categories fit on one line.
+ * Category section: CATEGORIES heading, one-line main nav, INDOOR/OUTDOOR/OFFICE for Furniture,
+ * and product grid per category. All categories work and show 3+ products with unique images.
  */
 export default function CategorySection() {
   const [mainCategory, setMainCategory] = useState<MainCategorySlug>("furniture");
   const [subCategory, setSubCategory] = useState<FurnitureSubSlug>("indoor");
 
+  const isFurniture = mainCategory === FURNITURE_SLUG;
   const gridItems = getFurnitureGridBySub(subCategory);
+  const categoryProducts = useMemo(
+    () => (isFurniture ? [] : getProductsByCategory(mainCategory as CategorySlug)),
+    [mainCategory, isFurniture]
+  );
 
   return (
     <section
@@ -24,22 +33,10 @@ export default function CategorySection() {
       style={{ backgroundColor: "#f8f6f3" }}
     >
       <div className="container max-w-7xl mx-auto">
-        {/* Heading */}
-        <p
-          className="text-center mb-6"
-          style={{
-            fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
-            fontSize: "0.875rem",
-            fontWeight: 600,
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: "#5c5346",
-          }}
-        >
+        <p className="text-center mb-6 tracking-[0.2em] text-muted-foreground uppercase font-sans text-sm">
           Categories
         </p>
 
-        {/* Main category nav — single line, no scroll */}
         <nav
           className="category-main-nav flex flex-nowrap justify-center items-center mb-8 overflow-x-hidden"
           aria-label="Main categories"
@@ -65,33 +62,35 @@ export default function CategorySection() {
           .category-main-nav-item { font-size: clamp(0.5rem, 1.05vw, 0.8rem); }
         `}</style>
 
-        {/* Sub-category: INDOOR / OUTDOOR / OFFICE */}
-        <div className="flex flex-wrap justify-center items-center gap-2 mb-8">
-          {furnitureSubTabs.map((tab, index) => (
-            <span key={tab.slug} className="flex items-center gap-2">
-              {index > 0 && (
-                <span className="text-[#8a8378]" style={{ fontSize: "clamp(0.65rem, 1vw, 0.75rem)" }}>
-                  /
-                </span>
-              )}
-              <button
-                type="button"
-                onClick={() => setSubCategory(tab.slug)}
-                className="uppercase font-medium tracking-wide transition-colors pb-1 border-b-2 -mb-px"
-                style={{
-                  fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
-                  fontSize: "clamp(0.7rem, 1vw, 0.8rem)",
-                  color: subCategory === tab.slug ? "#3d3832" : "#8a8378",
-                  borderBottomColor: subCategory === tab.slug ? "#3d3832" : "transparent",
-                }}
-              >
-                {tab.label}
-              </button>
-            </span>
-          ))}
-        </div>
+        {/* Sub-category: INDOOR / OUTDOOR / OFFICE (only when Furniture is selected) */}
+        {isFurniture && (
+          <div className="flex flex-wrap justify-center items-center gap-2 mb-8">
+            {furnitureSubTabs.map((tab, index) => (
+              <span key={tab.slug} className="flex items-center gap-2">
+                {index > 0 && (
+                  <span className="text-[#8a8378]" style={{ fontSize: "clamp(0.65rem, 1vw, 0.75rem)" }}>
+                    /
+                  </span>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setSubCategory(tab.slug)}
+                  className="uppercase font-medium tracking-wide transition-colors pb-1 border-b-2 -mb-px"
+                  style={{
+                    fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+                    fontSize: "clamp(0.7rem, 1vw, 0.8rem)",
+                    color: subCategory === tab.slug ? "#3d3832" : "#8a8378",
+                    borderBottomColor: subCategory === tab.slug ? "#3d3832" : "transparent",
+                  }}
+                >
+                  {tab.label}
+                </button>
+              </span>
+            ))}
+          </div>
+        )}
 
-        {/* Product grid: 3 rows × 4 columns */}
+        {/* Grid: furniture sub-grid or category products */}
         <div
           className="grid gap-4 md:gap-6"
           style={{
@@ -99,37 +98,74 @@ export default function CategorySection() {
             gridAutoRows: "1fr",
           }}
         >
-          {gridItems.map((item) => (
-            <Link
-              key={item.slug}
-              to={item.href}
-              className="group flex flex-col items-center text-decoration-none text-inherit"
-            >
-              <div
-                className="w-full max-w-[140px] md:max-w-[160px] aspect-[4/3] overflow-hidden bg-[#e8e4df] mb-2 md:mb-3"
-                style={{
-                  filter: "sepia(0.15) contrast(1.02)",
-                }}
-              >
-                <img
-                  src={item.image}
-                  alt={item.label}
-                  className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
-                />
-              </div>
-              <span
-                className="text-center uppercase font-medium tracking-wide"
-                style={{
-                  fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
-                  fontSize: "clamp(0.65rem, 0.9vw, 0.75rem)",
-                  color: "#3d3832",
-                  lineHeight: 1.3,
-                }}
-              >
-                {item.label}
-              </span>
-            </Link>
-          ))}
+          {isFurniture
+            ? gridItems.map((item) => (
+                <Link
+                  key={item.slug}
+                  to={item.href}
+                  className="group flex flex-col items-center text-decoration-none text-inherit"
+                >
+                  <div
+                    className="w-full max-w-[140px] md:max-w-[160px] aspect-[4/3] overflow-hidden bg-[#e8e4df] mb-2 md:mb-3"
+                    style={{ filter: "sepia(0.15) contrast(1.02)" }}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.label}
+                      className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
+                    />
+                  </div>
+                  <span
+                    className="text-center uppercase font-medium tracking-wide"
+                    style={{
+                      fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+                      fontSize: "clamp(0.65rem, 0.9vw, 0.75rem)",
+                      color: "#3d3832",
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {item.label}
+                  </span>
+                </Link>
+              ))
+            : categoryProducts.map((product) => (
+                <Link
+                  key={product.id}
+                  to={`/product/${product.id}`}
+                  className="group flex flex-col items-center text-decoration-none text-inherit"
+                >
+                  <div
+                    className="w-full max-w-[140px] md:max-w-[160px] aspect-[4/3] overflow-hidden bg-[#e8e4df] mb-2 md:mb-3"
+                    style={{ filter: "sepia(0.15) contrast(1.02)" }}
+                  >
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
+                    />
+                  </div>
+                  <span
+                    className="text-center uppercase font-medium tracking-wide"
+                    style={{
+                      fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+                      fontSize: "clamp(0.65rem, 0.9vw, 0.75rem)",
+                      color: "#3d3832",
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {product.name}
+                  </span>
+                </Link>
+              ))}
+        </div>
+
+        <div className="text-center mt-8">
+          <Link
+            to="/collections"
+            className="inline-flex items-center justify-center h-12 px-8 bg-neutral-900 text-white font-medium hover:bg-neutral-800 transition-colors uppercase tracking-wide text-sm"
+          >
+            View All
+          </Link>
         </div>
       </div>
     </section>

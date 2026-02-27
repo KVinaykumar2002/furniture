@@ -110,22 +110,22 @@ export default function PromoStrip() {
                     {/* ── Vertical divider ── */}
                     <div className="hidden md:block w-px h-14 bg-border" />
 
-                    {/* ── Stats ── */}
-                    <div className="flex items-center gap-5 flex-wrap justify-center">
+                    {/* ── Stats (all in one row) ── */}
+                    <div className="flex items-center gap-3 sm:gap-5 flex-nowrap justify-center min-w-0">
                         {stats.map(({ icon: Icon, value, label }, i) => (
-                            <div key={label} className="flex items-center gap-3">
+                            <div key={label} className="flex items-center gap-2 sm:gap-3 shrink-0">
                                 {i > 0 && (
-                                    <div className="hidden sm:block w-px h-10 bg-border mr-1" />
+                                    <div className="w-px h-10 bg-border shrink-0" />
                                 )}
                                 {/* Icon container */}
-                                <div className="w-10 h-10 flex items-center justify-center bg-primary/10 shrink-0 rounded-sm">
-                                    <Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                                <div className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-primary/10 shrink-0 rounded-sm">
+                                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" strokeWidth={1.5} />
                                 </div>
-                                <div>
-                                    <p className="text-sm font-extrabold text-foreground leading-tight font-body">
+                                <div className="min-w-0">
+                                    <p className="text-xs sm:text-sm font-extrabold text-foreground leading-tight font-body truncate">
                                         {value}
                                     </p>
-                                    <p className="text-[11px] text-muted-foreground leading-tight font-body">
+                                    <p className="text-[10px] sm:text-[11px] text-muted-foreground leading-tight font-body truncate">
                                         {label}
                                     </p>
                                 </div>

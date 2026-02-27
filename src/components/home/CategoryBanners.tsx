@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // Unique Unsplash images for category banners (higher res for larger display)
 const BANNER_IMAGES = {
   living: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=1600",
-  dining: "https://images.unsplash.com/photo-1620319515594-e3dc164b162f?auto=format&fit=crop&q=80&w=1600",
+  dining: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&q=80&w=1600",
   bedroom: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&q=80&w=1600",
 };
 

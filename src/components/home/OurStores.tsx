@@ -7,7 +7,7 @@ export default function OurStores() {
     return (
         <section className="w-full py-8 md:py-12 px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col w-full mx-auto max-w-[1400px]">
-                <div className="flex flex-col md:flex-row items-stretch w-full group bg-[#dbcfc4] rounded-[2rem] overflow-hidden shadow-sm">
+                <div className="flex flex-col md:flex-row items-stretch w-full group bg-[#dbcfc4] overflow-hidden shadow-sm">
 
                     {/* Text Content Block (30%) */}
                     <div className="w-full md:w-[30%] flex flex-col justify-center p-6 md:p-8 lg:p-10 order-2 md:order-1">
@@ -33,22 +33,6 @@ export default function OurStores() {
                                 Get Location
                                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                             </Link>
-                        </div>
-
-                        {/* Stats Row - Integrated into text block */}
-                        <div className="flex items-center gap-5 md:gap-6 pt-4 border-t border-[#2C1F1A]/10 w-full max-w-[280px]">
-                            <div>
-                                <p className="text-lg md:text-xl font-bold text-[#2C1F1A] font-display">25+</p>
-                                <p className="text-[9px] uppercase font-semibold tracking-wider text-[#2C1F1A]/60">Stores</p>
-                            </div>
-                            <div>
-                                <p className="text-lg md:text-xl font-bold text-[#2C1F1A] font-display">10+</p>
-                                <p className="text-[9px] uppercase font-semibold tracking-wider text-[#2C1F1A]/60">Cities</p>
-                            </div>
-                            <div>
-                                <p className="text-lg md:text-xl font-bold text-[#2C1F1A] font-display">3 Yr</p>
-                                <p className="text-[9px] uppercase font-semibold tracking-wider text-[#2C1F1A]/60">Warranty</p>
-                            </div>
                         </div>
                     </div>
 

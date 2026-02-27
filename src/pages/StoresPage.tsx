@@ -2,14 +2,25 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionWrapper from "@/components/SectionWrapper";
-import { MapPin } from "lucide-react";
+import { MapPin, ArrowLeft } from "lucide-react";
 import { stores } from "@/data/stores";
 
 export default function StoresPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <SectionWrapper subtitle="Find us" title="Store Locator" className="pt-24">
+      <div className="pt-24 pb-4 px-4 md:px-6">
+        <div className="container">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 shrink-0" />
+            Back to Home
+          </Link>
+        </div>
+      </div>
+      <SectionWrapper subtitle="Find us" title="Store Locator" className="pt-0">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {stores.map((store) => (
             <Link

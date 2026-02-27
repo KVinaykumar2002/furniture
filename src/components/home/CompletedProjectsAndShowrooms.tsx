@@ -1,4 +1,4 @@
-import { Building2, Sofa, Users, MapPin } from "lucide-react";
+import { Building2, Sofa, Users, MapPin, Phone } from "lucide-react";
 const stats = [
   { icon: Building2, label: "Fit-out", value: "553" },
   { icon: Sofa, label: "Furnishing", value: "10,154" },
@@ -43,6 +43,26 @@ export default function CompletedProjectsAndShowrooms() {
                     KONDAPUR, HYDERABAD
                   </span>
                 </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Second strip - White with location & phone, marquee left to right (same size as first strip) */}
+      <section className="w-full border-t border-border overflow-hidden">
+        <div className="py-5 md:py-6 min-h-[4.5rem] md:min-h-[5rem] flex items-center overflow-hidden bg-white">
+          <div className="flex animate-marquee-right whitespace-nowrap w-max will-change-transform">
+            {[1, 2, 3].map((copy) => (
+              <div key={copy} className="inline-flex items-center gap-8 md:gap-12 px-6 shrink-0">
+                <span className="inline-flex items-center gap-2 text-[#5c5346] text-sm md:text-base font-semibold tracking-[0.15em] uppercase whitespace-nowrap">
+                  <MapPin className="w-4 h-4 text-[#8b7355] shrink-0" />
+                  KONDAPUR, HYDERABAD,
+                  <a href="tel:+918121806688" className="inline-flex items-center gap-1.5 hover:text-[#3d3832] transition-colors">
+                    <Phone className="w-4 h-4 text-[#8b7355] shrink-0" />
+                    +918121806688
+                  </a>
+                </span>
               </div>
             ))}
           </div>
