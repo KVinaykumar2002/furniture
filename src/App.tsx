@@ -8,6 +8,7 @@ import { WishlistProvider } from "@/context/WishlistContext";
 import CartDrawer from "@/components/CartDrawer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollToTop from "@/components/ScrollToTop";
+import EnquiryModal from "@/components/EnquiryModal";
 import Index from "./pages/Index";
 import LivingPage from "./pages/LivingPage";
 import DiningPage from "./pages/DiningPage";
@@ -37,6 +38,7 @@ const App = () => (
             <ScrollToTop />
             <CartDrawer />
             <WhatsAppButton />
+            <EnquiryModal />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/living" element={<LivingPage />} />

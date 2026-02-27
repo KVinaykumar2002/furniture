@@ -1,11 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 
-import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
-import catSofas from "@/assets/cat-sofas.jpg";
-import heroNew3 from "@/assets/hero-new-3.jpg";
 import heroNewFirst from "@/assets/hero-new-first.jpg";
+import heroSaleBanner from "@/assets/hero-sale-banner.png";
 
 const slides = [
   {
@@ -19,9 +17,9 @@ const slides = [
     subtitle: "Discover collections that transform your home into a sanctuary.",
   },
   {
-    image: heroNew3,
-    title: "Living Spaces Reimagined",
-    subtitle: "Sofas, chairs, and living room essentials crafted for everyday luxury.",
+    image: heroSaleBanner,
+    title: "Best Deal Today — 20% Off",
+    subtitle: "Premium furniture for every room. Limited time offer.",
   },
 ];
 

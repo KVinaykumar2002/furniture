@@ -33,7 +33,7 @@ export default function CategorySection() {
       style={{ backgroundColor: "#f8f6f3" }}
     >
       <div className="container max-w-7xl mx-auto">
-        <p className="text-center mb-6 tracking-[0.2em] text-muted-foreground uppercase font-sans text-sm">
+        <p className="text-center mb-6 tracking-[0.2em] text-muted-foreground uppercase font-sans text-base">
           Categories
         </p>
 
@@ -59,7 +59,7 @@ export default function CategorySection() {
         </nav>
         <style>{`
           .category-main-nav { gap: clamp(0.5rem, 1.5vw, 1.5rem); }
-          .category-main-nav-item { font-size: clamp(0.5rem, 1.05vw, 0.8rem); }
+          .category-main-nav-item { font-size: clamp(0.75rem, 1.25vw, 0.95rem); }
         `}</style>
 
         {/* Sub-category: INDOOR / OUTDOOR / OFFICE (only when Furniture is selected) */}
@@ -68,7 +68,7 @@ export default function CategorySection() {
             {furnitureSubTabs.map((tab, index) => (
               <span key={tab.slug} className="flex items-center gap-2">
                 {index > 0 && (
-                  <span className="text-[#8a8378]" style={{ fontSize: "clamp(0.65rem, 1vw, 0.75rem)" }}>
+                  <span className="text-[#8a8378]" style={{ fontSize: "clamp(0.8rem, 1.1vw, 0.9rem)" }}>
                     /
                   </span>
                 )}
@@ -78,7 +78,7 @@ export default function CategorySection() {
                   className="uppercase font-medium tracking-wide transition-colors pb-1 border-b-2 -mb-px"
                   style={{
                     fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
-                    fontSize: "clamp(0.7rem, 1vw, 0.8rem)",
+                    fontSize: "clamp(0.8rem, 1.1vw, 0.9rem)",
                     color: subCategory === tab.slug ? "#3d3832" : "#8a8378",
                     borderBottomColor: subCategory === tab.slug ? "#3d3832" : "transparent",
                   }}
@@ -119,7 +119,7 @@ export default function CategorySection() {
                     className="text-center uppercase font-medium tracking-wide"
                     style={{
                       fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
-                      fontSize: "clamp(0.65rem, 0.9vw, 0.75rem)",
+                      fontSize: "clamp(0.75rem, 1vw, 0.875rem)",
                       color: "#3d3832",
                       lineHeight: 1.3,
                     }}
@@ -148,7 +148,7 @@ export default function CategorySection() {
                     className="text-center uppercase font-medium tracking-wide"
                     style={{
                       fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
-                      fontSize: "clamp(0.65rem, 0.9vw, 0.75rem)",
+                      fontSize: "clamp(0.75rem, 1vw, 0.875rem)",
                       color: "#3d3832",
                       lineHeight: 1.3,
                     }}
