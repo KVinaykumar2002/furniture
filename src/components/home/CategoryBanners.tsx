@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
-import catSofas from "@/assets/cat-sofas.jpg";
-import catDining from "@/assets/cat-dining.jpg";
-import catBedroom from "@/assets/cat-bedroom.jpg";
+
+// Unique Unsplash images for category banners (higher res for larger display)
+const BANNER_IMAGES = {
+  living: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=1600",
+  dining: "https://images.unsplash.com/photo-1620319515594-e3dc164b162f?auto=format&fit=crop&q=80&w=1600",
+  bedroom: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&q=80&w=1600",
+};
 
 interface BannerData {
     category: string;
@@ -17,28 +21,28 @@ const banners: BannerData[] = [
         title: "Welcoming",
         tagline: "Comfort Redefined",
         href: "/living",
-        image: catSofas,
+        image: BANNER_IMAGES.living,
     },
     {
         category: "Dining",
         title: "Elegant",
         tagline: "Dining Essentials",
         href: "/dining",
-        image: catDining,
+        image: BANNER_IMAGES.dining,
     },
     {
         category: "Bedroom",
         title: "Serene",
         tagline: "Sleep Spaces",
         href: "/bedroom",
-        image: catBedroom,
+        image: BANNER_IMAGES.bedroom,
     },
 ];
 
 export default function CategoryBanners() {
     return (
-        <section className="w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col w-full mx-auto max-w-[1600px] gap-12 lg:gap-20">
+        <section className="w-full py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col w-full mx-auto max-w-[1920px] gap-16 lg:gap-24">
                 {banners.map((banner, index) => {
                     // Define background colors based on category to match design
                     let bgColor = "bg-white";
@@ -55,7 +59,7 @@ export default function CategoryBanners() {
                         >
                             {/* Text Content Block (30%) */}
                             <div
-                                className={`w-full md:w-[30%] flex flex-col justify-center p-8 md:p-12 lg:p-16 ${isImageFirst ? 'order-2' : 'order-1'} md:order-none`}
+                                className={`w-full md:w-[30%] flex flex-col justify-center p-8 md:p-12 lg:p-20 ${isImageFirst ? 'order-2' : 'order-1'} md:order-none`}
                                 style={{ order: isImageFirst ? 2 : 1 }}
                             >
                                 <h3 className="text-[#3b2b2b] text-4xl md:text-5xl lg:text-6xl font-bold tracking-widest uppercase mb-4">
@@ -85,8 +89,8 @@ export default function CategoryBanners() {
                                 </div>
                             </div>
 
-                            {/* Image Block (70%) */}
-                            <div className="w-full md:w-[70%] relative aspect-[16/9] md:aspect-[21/9] lg:aspect-[24/9] overflow-hidden" style={{ order: isImageFirst ? 1 : 2 }}>
+                            {/* Image Block (70%) — larger aspect so full images look perfect */}
+                            <div className="w-full md:w-[70%] relative aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] min-h-[260px] md:min-h-[320px] lg:min-h-[400px] overflow-hidden" style={{ order: isImageFirst ? 1 : 2 }}>
                                 <img
                                     src={banner.image}
                                     alt={`${banner.category} Collection - ${banner.title}`}

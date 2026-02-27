@@ -10,7 +10,13 @@ export type SubcategorySlug =
   | "bar-stools"
   | "dining-chairs"
   | "dining-tables"
-  | "beds";
+  | "beds"
+  | "bedside-tables"
+  | "dressers-mirrors"
+  | "mattress"
+  | "wardrobes"
+  | "sideboard"
+  | "tv-units";
 
 export interface Product {
   id: string;
@@ -31,7 +37,7 @@ export const products: Product[] = [
   { id: "1", name: "MOVO Service Trolley - JK-D208", image: "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?auto=format&fit=crop&q=80&w=800", price: 2035, oldPrice: 2325, save: 290, rating: 5, reviews: 3, category: "furniture", mainCategory: "living", subcategory: "center-tables" },
   { id: "2", name: "43 Pieces Passifoy Dining Set", image: "https://images.unsplash.com/photo-1617806118233-18e1c0945594?auto=format&fit=crop&q=80&w=800", price: 1015, oldPrice: 1410, save: 395, rating: 4, reviews: 12, category: "furniture", mainCategory: "dining", subcategory: "dining-tables" },
   { id: "3", name: "Haven Ebarza Dinnerware Set", image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&q=80&w=800", price: 755, oldPrice: 1165, save: 410, rating: 4, reviews: 5, category: "furniture", mainCategory: "dining" },
-  { id: "4", name: "Classic Oak Sideboard", image: "https://images.unsplash.com/photo-1595514535215-188b0a94b4cf?auto=format&fit=crop&q=80&w=800", price: 24999, rating: 5, reviews: 8, category: "furniture", mainCategory: "living", subcategory: "sofas" },
+  { id: "4", name: "Classic Oak Sideboard", image: "https://images.unsplash.com/photo-1628131346067-17eb48a04fac?auto=format&fit=crop&q=80&w=800", price: 24999, rating: 5, reviews: 8, category: "furniture", mainCategory: "living", subcategory: "sofas" },
   { id: "5", name: "Velvet Lounge Chair", image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=800", price: 18999, rating: 4, reviews: 6, category: "furniture", mainCategory: "living", subcategory: "relax-chairs" },
   { id: "6", name: "Patio Dining Set - 6 Seater", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800", price: 34999, oldPrice: 39999, save: 5000, rating: 5, reviews: 4, category: "outdoor", mainCategory: "dining", subcategory: "dining-tables" },
   { id: "7", name: "Garden Lounge Chairs (Pair)", image: "https://images.unsplash.com/photo-1599596652431-8f5eb22304dc?auto=format&fit=crop&q=80&w=800", price: 12999, rating: 4, reviews: 11, category: "outdoor", mainCategory: "living", subcategory: "relax-chairs" },
@@ -69,8 +75,8 @@ export const products: Product[] = [
   { id: "38", name: "Round Dining Table - 4 Seater", image: "https://images.unsplash.com/photo-1616627529452-fbdff13d5089?auto=format&fit=crop&q=80&w=800", price: 19999, rating: 4, reviews: 6, category: "furniture", mainCategory: "dining", subcategory: "dining-tables" },
   { id: "39", name: "Queen Size Platform Bed", image: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80&w=800", price: 32999, oldPrice: 36999, save: 4000, rating: 5, reviews: 8, category: "furniture", mainCategory: "bedroom", subcategory: "beds" },
   { id: "40", name: "Single Bed - Solid Wood", image: "https://images.unsplash.com/photo-1533000720448-958aed61476b?auto=format&fit=crop&q=80&w=800", price: 15999, rating: 4, reviews: 4, category: "furniture", mainCategory: "bedroom", subcategory: "beds" },
-  { id: "41", name: "Bedside Table with Drawer", image: "https://images.unsplash.com/photo-1582562124578-8ba94c25f4b5?auto=format&fit=crop&q=80&w=800", price: 6999, rating: 4, reviews: 9, category: "furniture", mainCategory: "bedroom" },
-  { id: "42", name: "Dressing Table with Mirror", image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=800", price: 27999, rating: 5, reviews: 5, category: "furniture", mainCategory: "bedroom" },
+  { id: "41", name: "Bedside Table with Drawer", image: "https://images.unsplash.com/photo-1582562124578-8ba94c25f4b5?auto=format&fit=crop&q=80&w=800", price: 6999, rating: 4, reviews: 9, category: "furniture", mainCategory: "bedroom", subcategory: "bedside-tables" },
+  { id: "42", name: "Dressing Table with Mirror", image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=800", price: 27999, rating: 5, reviews: 5, category: "furniture", mainCategory: "bedroom", subcategory: "dressers-mirrors" },
 ];
 
 export function getProductsByCategory(category: CategorySlug): Product[] {

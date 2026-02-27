@@ -57,6 +57,42 @@ export const subcategoryDescriptions: Record<SubcategorySlug, SubcategoryInfo> =
     description: "Beds and bed frames for restful sleep. King, queen, and single sizes in upholstered, wooden, and platform styles.",
     mainCategory: "bedroom",
   },
+  "bedside-tables": {
+    slug: "bedside-tables",
+    label: "Bedside Tables",
+    description: "Bedside tables and nightstands to keep essentials within reach. Compact designs in wood, metal, and modern styles.",
+    mainCategory: "bedroom",
+  },
+  "dressers-mirrors": {
+    slug: "dressers-mirrors",
+    label: "Dressers & Mirrors",
+    description: "Dressing tables and mirrors for the bedroom. Vanity units and standalone mirrors for style and function.",
+    mainCategory: "bedroom",
+  },
+  mattress: {
+    slug: "mattress",
+    label: "Mattress",
+    description: "Quality mattresses for a restful night. Choose from various sizes and comfort levels.",
+    mainCategory: "bedroom",
+  },
+  wardrobes: {
+    slug: "wardrobes",
+    label: "Closet / Wardrobe",
+    description: "Wardrobes and closet systems for organised storage. Built-in and freestanding options.",
+    mainCategory: "bedroom",
+  },
+  sideboard: {
+    slug: "sideboard",
+    label: "Sideboard / Storage",
+    description: "Sideboards and storage units for dining and living spaces. Display and store with style.",
+    mainCategory: "dining",
+  },
+  "tv-units": {
+    slug: "tv-units",
+    label: "Wall Units / T.V. Units",
+    description: "TV units and wall units for your living room. Shelving and media storage in modern designs.",
+    mainCategory: "living",
+  },
 };
 
 /** Bar stools appear under both Living and Dining; use mainCategory to get the right description context */

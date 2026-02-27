@@ -1,4 +1,5 @@
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionWrapper from "@/components/SectionWrapper";
@@ -25,9 +26,18 @@ export default function BedroomPage() {
           <img src={cat.image} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-foreground/50" />
         </div>
-        <div className="container relative z-10 text-center px-4">
-          <h1 className="font-display text-4xl md:text-6xl font-light text-white mb-4">{pageTitle}</h1>
-          <p className="text-white/90 max-w-xl mx-auto">{pageDescription}</p>
+        <div className="container relative z-10 px-4">
+          <Link
+            to="/#categories"
+            className="inline-flex items-center gap-2 text-white/95 hover:text-white text-sm font-medium mb-6 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 shrink-0" />
+            Back to Categories
+          </Link>
+          <div className="text-center">
+            <h1 className="font-display text-4xl md:text-6xl font-light text-white mb-4">{pageTitle}</h1>
+            <p className="text-white/90 max-w-xl mx-auto">{pageDescription}</p>
+          </div>
         </div>
       </section>
       <SectionWrapper className="bg-white">

@@ -57,12 +57,38 @@
 }
 
 @layer base {
+  /* Consistent rendering across devices: prevent text inflation and overflow */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Prevent content from causing horizontal scroll on any device */
+  #root {
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Media: scale within container so layout stays consistent on all devices */
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 
   h1, h2, h3, h4, h5, h6 {

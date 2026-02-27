@@ -19,13 +19,13 @@ export const shopCategories: Record<MainCategorySlug, ShopCategory> = {
     slug: "dining",
     title: "Dining",
     description: "Dining chairs, tables & bar stools for every home.",
-    image: "https://images.unsplash.com/photo-1617806118233-18e1c0945594?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1620319515594-e3dc164b162f?auto=format&fit=crop&q=80&w=800",
   },
   bedroom: {
     slug: "bedroom",
     title: "Bedroom",
     description: "Beds and bedroom furniture for restful nights.",
-    image: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=800",
   },
 };
 

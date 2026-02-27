@@ -1,129 +1,137 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { shopByCategories } from "@/data/categorySection";
+import {
+  mainCategoryTabs,
+  furnitureSubTabs,
+  getFurnitureGridBySub,
+  type MainCategorySlug,
+  type FurnitureSubSlug,
+} from "@/data/categorySection";
 
 /**
- * "Shop by Category" section – circular image grid.
- * Matches the reference design: 8 per row, 2 rows, light-gray circles,
- * category label below each circle.
+ * Category section matching the reference: CATEGORIES heading, one-line main nav,
+ * INDOOR / OUTDOOR / OFFICE sub-nav, and 3×4 product grid. All categories fit on one line.
  */
 export default function CategorySection() {
+  const [mainCategory, setMainCategory] = useState<MainCategorySlug>("furniture");
+  const [subCategory, setSubCategory] = useState<FurnitureSubSlug>("indoor");
+
+  const gridItems = getFurnitureGridBySub(subCategory);
+
   return (
-    <section className="bg-white py-12 md:py-16 px-4 md:px-6">
+    <section
+      className="py-10 md:py-14 px-4 md:px-6"
+      style={{ backgroundColor: "#f8f6f3" }}
+    >
       <div className="container max-w-7xl mx-auto">
         {/* Heading */}
         <p
-          className="text-muted-foreground"
+          className="text-center mb-6"
           style={{
             fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
             fontSize: "0.875rem",
             fontWeight: 600,
             letterSpacing: "0.15em",
             textTransform: "uppercase",
-            marginBottom: "2rem",
+            color: "#5c5346",
           }}
         >
-          Shop by Category
+          Categories
         </p>
 
-        {/* Grid: 4 cols on mobile, 8 cols on desktop */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
-            gap: "1.25rem 0.75rem",
-          }}
-          className="shop-by-category-grid"
+        {/* Main category nav — single line, no scroll */}
+        <nav
+          className="category-main-nav flex flex-nowrap justify-center items-center mb-8 overflow-x-hidden"
+          aria-label="Main categories"
         >
-          {shopByCategories.map((cat) => (
-            <Link
-              key={cat.slug}
-              to={cat.href}
-              className="shop-by-category-item"
+          {mainCategoryTabs.map((tab) => (
+            <button
+              key={tab.slug}
+              type="button"
+              onClick={() => setMainCategory(tab.slug)}
+              className="category-main-nav-item shrink-0 whitespace-nowrap uppercase font-medium tracking-wide transition-colors pb-1 border-b-2 -mb-px"
               style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                textDecoration: "none",
-                color: "inherit",
+                fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+                color: mainCategory === tab.slug ? "#3d3832" : "#8a8378",
+                borderBottomColor: mainCategory === tab.slug ? "#3d3832" : "transparent",
               }}
             >
-              {/* Square Box */}
-              <div
-                className="shop-by-category-square"
-                style={{
-                  width: "100%",
-                  maxWidth: "110px",
-                  aspectRatio: "1 / 1",
-                  borderRadius: "0",
-                  overflow: "hidden",
-                  backgroundColor: cat.isNewArrivals ? "#1a3a6b" : "#f0f0f0",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "0.6rem",
-                  transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                }}
-              >
-                {cat.isNewArrivals ? (
-                  /* New Arrivals: 4-point star on dark blue */
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M20 2 L23.5 15.5 L38 20 L23.5 24.5 L20 38 L16.5 24.5 L2 20 L16.5 15.5 Z"
-                      fill="white"
-                    />
-                  </svg>
-                ) : (
-                  <img
-                    src={cat.image}
-                    alt={cat.label}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                )}
-              </div>
+              {tab.label}
+            </button>
+          ))}
+        </nav>
+        <style>{`
+          .category-main-nav { gap: clamp(0.5rem, 1.5vw, 1.5rem); }
+          .category-main-nav-item { font-size: clamp(0.5rem, 1.05vw, 0.8rem); }
+        `}</style>
 
-              {/* Label */}
-              <span
+        {/* Sub-category: INDOOR / OUTDOOR / OFFICE */}
+        <div className="flex flex-wrap justify-center items-center gap-2 mb-8">
+          {furnitureSubTabs.map((tab, index) => (
+            <span key={tab.slug} className="flex items-center gap-2">
+              {index > 0 && (
+                <span className="text-[#8a8378]" style={{ fontSize: "clamp(0.65rem, 1vw, 0.75rem)" }}>
+                  /
+                </span>
+              )}
+              <button
+                type="button"
+                onClick={() => setSubCategory(tab.slug)}
+                className="uppercase font-medium tracking-wide transition-colors pb-1 border-b-2 -mb-px"
                 style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 500,
-                  color: "#444",
-                  textAlign: "center",
-                  lineHeight: 1.3,
-                  maxWidth: "110px",
+                  fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+                  fontSize: "clamp(0.7rem, 1vw, 0.8rem)",
+                  color: subCategory === tab.slug ? "#3d3832" : "#8a8378",
+                  borderBottomColor: subCategory === tab.slug ? "#3d3832" : "transparent",
                 }}
               >
-                {cat.label}
+                {tab.label}
+              </button>
+            </span>
+          ))}
+        </div>
+
+        {/* Product grid: 3 rows × 4 columns */}
+        <div
+          className="grid gap-4 md:gap-6"
+          style={{
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gridAutoRows: "1fr",
+          }}
+        >
+          {gridItems.map((item) => (
+            <Link
+              key={item.slug}
+              to={item.href}
+              className="group flex flex-col items-center text-decoration-none text-inherit"
+            >
+              <div
+                className="w-full max-w-[140px] md:max-w-[160px] aspect-[4/3] overflow-hidden bg-[#e8e4df] mb-2 md:mb-3"
+                style={{
+                  filter: "sepia(0.15) contrast(1.02)",
+                }}
+              >
+                <img
+                  src={item.image}
+                  alt={item.label}
+                  className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
+                />
+              </div>
+              <span
+                className="text-center uppercase font-medium tracking-wide"
+                style={{
+                  fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+                  fontSize: "clamp(0.65rem, 0.9vw, 0.75rem)",
+                  color: "#3d3832",
+                  lineHeight: 1.3,
+                }}
+              >
+                {item.label}
               </span>
             </Link>
           ))}
         </div>
       </div>
-
-      {/* Responsive CSS injected via style tag */}
-      <style>{`
-        .shop-by-category-grid {
-          grid-template-columns: repeat(4, 1fr) !important;
-        }
-        @media (min-width: 768px) {
-          .shop-by-category-grid {
-            grid-template-columns: repeat(8, 1fr) !important;
-          }
-        }
-        .shop-by-category-item:hover .shop-by-category-square {
-          transform: scale(1.06);
-          box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-        }
-      `}</style>
     </section>
   );
 }

@@ -1,7 +1,4 @@
 import { Building2, Sofa, Users, MapPin } from "lucide-react";
-import CategorySection from "@/components/home/CategorySection";
-import CategoryBanners from "@/components/home/CategoryBanners";
-
 const stats = [
   { icon: Building2, label: "Fit-out", value: "553" },
   { icon: Sofa, label: "Furnishing", value: "10,154" },
@@ -51,10 +48,6 @@ export default function CompletedProjectsAndShowrooms() {
           </div>
         </div>
       </section>
-
-      {/* Category section: main tabs, sub tabs, 2x4 grid */}
-      <CategorySection />
-      <CategoryBanners />
     </div>
   );
 }

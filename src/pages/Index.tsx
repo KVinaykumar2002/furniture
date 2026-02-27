@@ -17,8 +17,8 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <CategorySection />
       <ShopByCategory />
+      <CategorySection />
       <CategoryBanners />
       <CompletedProjectsAndShowrooms />
       <WhyChooseUs />
