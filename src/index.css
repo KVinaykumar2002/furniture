@@ -1,8 +1,28 @@
+/* Load fonts with swap so fallbacks show immediately on all devices (consistent Mac/Windows) */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Cross-browser / cross-OS baseline so the site looks the same on Mac, Windows, and other devices */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+}
 
 @layer base {
   :root {
@@ -57,14 +77,6 @@
 }
 
 @layer base {
-  /* Consistent rendering across devices: prevent text inflation and overflow */
-  html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    font-size: 16px;
-    scroll-behavior: smooth;
-  }
-
   * {
     @apply border-border;
   }

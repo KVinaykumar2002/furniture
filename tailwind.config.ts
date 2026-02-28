@@ -22,8 +22,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'serif'],
-        body: ['Lato', 'sans-serif'],
+        /* Cross-platform: same look on Mac and Windows — web font first, then system fallbacks */
+        display: ['"Cormorant Garamond"', 'Georgia', '"Times New Roman"', 'serif'],
+        body: ['Lato', '"Segoe UI"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

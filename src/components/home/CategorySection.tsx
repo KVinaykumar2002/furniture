@@ -13,6 +13,10 @@ import type { CategorySlug } from "@/data/categories";
 
 const FURNITURE_SLUG: MainCategorySlug = "furniture";
 
+/** Fallback when a category or product image fails to load */
+const FALLBACK_IMAGE =
+  "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600";
+
 /**
  * Category section: CATEGORIES heading, one-line main nav, INDOOR/OUTDOOR/OFFICE for Furniture,
  * and product grid per category. All categories work and show 3+ products with unique images.
@@ -51,7 +55,7 @@ export default function CategorySection() {
               onClick={() => setMainCategory(tab.slug)}
               className="category-main-nav-item shrink-0 whitespace-nowrap uppercase font-medium tracking-wide transition-colors pb-1 border-b-2 -mb-px"
               style={{
-                fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+                fontFamily: "Lato, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
                 color: mainCategory === tab.slug ? "#3d3832" : "#8a8378",
                 borderBottomColor: mainCategory === tab.slug ? "#3d3832" : "transparent",
               }}
@@ -80,7 +84,7 @@ export default function CategorySection() {
                   onClick={() => setSubCategory(tab.slug)}
                   className="uppercase font-medium tracking-wide transition-colors pb-1 border-b-2 -mb-px"
                   style={{
-                    fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+                    fontFamily: "Lato, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
                     fontSize: "clamp(0.8rem, 1.1vw, 0.9rem)",
                     color: subCategory === tab.slug ? "#3d3832" : "#8a8378",
                     borderBottomColor: subCategory === tab.slug ? "#3d3832" : "transparent",
@@ -116,12 +120,15 @@ export default function CategorySection() {
                       src={item.image}
                       alt={item.label}
                       className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = FALLBACK_IMAGE;
+                      }}
                     />
                   </div>
                   <span
                     className="text-center uppercase font-medium tracking-wide"
                     style={{
-                      fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+                      fontFamily: "Lato, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
                       fontSize: "clamp(0.75rem, 1vw, 0.875rem)",
                       color: "#3d3832",
                       lineHeight: 1.3,
@@ -145,12 +152,15 @@ export default function CategorySection() {
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = FALLBACK_IMAGE;
+                      }}
                     />
                   </div>
                   <span
                     className="text-center uppercase font-medium tracking-wide"
                     style={{
-                      fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+                      fontFamily: "Lato, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
                       fontSize: "clamp(0.75rem, 1vw, 0.875rem)",
                       color: "#3d3832",
                       lineHeight: 1.3,
