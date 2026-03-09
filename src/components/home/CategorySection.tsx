@@ -37,7 +37,6 @@ export default function CategorySection() {
     <section
       ref={ref}
       className="animate-on-scroll py-10 md:py-14 px-4 md:px-6"
-      style={{ backgroundColor: "#f8f6f3" }}
     >
       <div className="container max-w-7xl mx-auto">
         <p className="text-center mb-6 tracking-[0.2em] text-muted-foreground uppercase font-sans text-base">
@@ -113,7 +112,7 @@ export default function CategorySection() {
                   className="group flex flex-col items-center text-decoration-none text-inherit"
                 >
                   <div
-                    className="w-full max-w-[140px] md:max-w-[160px] aspect-[4/3] overflow-hidden bg-[#e8e4df] mb-2 md:mb-3"
+                    className="w-full max-w-[140px] md:max-w-[160px] aspect-[4/3] overflow-hidden mb-2 md:mb-3"
                     style={{ filter: "sepia(0.15) contrast(1.02)" }}
                   >
                     <img
@@ -145,7 +144,7 @@ export default function CategorySection() {
                   className="group flex flex-col items-center text-decoration-none text-inherit"
                 >
                   <div
-                    className="w-full max-w-[140px] md:max-w-[160px] aspect-[4/3] overflow-hidden bg-[#e8e4df] mb-2 md:mb-3"
+                    className="w-full max-w-[140px] md:max-w-[160px] aspect-[4/3] overflow-hidden mb-2 md:mb-3"
                     style={{ filter: "sepia(0.15) contrast(1.02)" }}
                   >
                     <img

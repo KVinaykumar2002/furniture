@@ -40,12 +40,12 @@ export interface CategoryGridItem {
   href: string;
 }
 
-/** 3x4 grid for Furniture > Indoor — each item has a unique image */
+/** 3x4 grid for Furniture > Indoor — first 4 use local luxury sofa images (1–4.png) */
 export const indoorFurnitureGrid: CategoryGridItem[] = [
-  { slug: "all", label: "All Furniture", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600", href: "/collections" },
-  { slug: "sofas", label: "Sofas", image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=600", href: "/living?sub=sofas" },
-  { slug: "bedsteads", label: "Bedsteads", image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=600", href: "/bedroom?sub=beds" },
-  { slug: "mattress", label: "Mattress", image: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80&w=600", href: "/bedroom?sub=mattress" },
+  { slug: "all", label: "All Furniture", image: "/1.png", href: "/collections" },
+  { slug: "sofas", label: "Sofas", image: "/2.png", href: "/living?sub=sofas" },
+  { slug: "bedsteads", label: "Bedsteads", image: "/3.png", href: "/bedroom?sub=beds" },
+  { slug: "mattress", label: "Mattress", image: "/4.png", href: "/bedroom?sub=mattress" },
   { slug: "bedside-tables", label: "Bedside Tables", image: "https://images.unsplash.com/photo-1582562124578-8ba94c25f4b5?auto=format&fit=crop&q=80&w=600", href: "/bedroom?sub=bedside-tables" },
   { slug: "dressers-mirrors", label: "Dressers & Mirrors", image: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&q=80&w=600", href: "/bedroom?sub=dressers-mirrors" },
   { slug: "lounge-chairs", label: "Lounge Chairs", image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=600", href: "/living?sub=relax-chairs" },
